@@ -22,7 +22,7 @@ public class Line_1
 
         System.out.println("sum is:"+sum);
         System.out.println();
-       // System.exit(0);
+        System.out.println("Select you event: ");
 
     }
 

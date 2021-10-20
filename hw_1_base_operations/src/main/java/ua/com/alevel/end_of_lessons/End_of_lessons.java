@@ -16,5 +16,6 @@ public class End_of_lessons {
         System.out.print(":");
         System.out.print(a % 60);
         System.out.println();
+        System.out.println("Select you event: ");;
     }
 }

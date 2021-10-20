@@ -21,7 +21,7 @@ public class ProgramRun {
         try
         {
             while ((event = reader.readLine()) !=null) {
-               System.out.println("Select you event: ");
+
                 switch (event)
                 {
 
