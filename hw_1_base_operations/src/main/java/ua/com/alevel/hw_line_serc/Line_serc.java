@@ -12,10 +12,9 @@ public class Line_serc
     {
         System.out.println("Enter a character");
         Scanner con = new Scanner(System.in);
-
         String s = con.nextLine();
+        s = s.replaceAll("[^A-Za-zА-Яа-я]", "");
 
-        s = s.replaceAll("[1234567890]","");
 
         System.out.println(s);
 
@@ -40,7 +39,8 @@ public class Line_serc
         }System.out.println(numChars);
 
         System.out.println();
-       // System.exit(0);
+        System.out.println("Select you event: ");
+
     }
 }
 
