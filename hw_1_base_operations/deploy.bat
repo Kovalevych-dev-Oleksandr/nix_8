@@ -1,2 +1,2 @@
+call .\mvn_clean.bat
 call .\run.bat
-call .\clean.but

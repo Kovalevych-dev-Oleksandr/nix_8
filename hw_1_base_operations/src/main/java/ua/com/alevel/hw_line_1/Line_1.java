@@ -11,7 +11,7 @@ public class Line_1
 
         int sum = 0;
         Scanner str = new Scanner(System.in);
-        System.out.println("enter characters\n");
+        System.out.println("Enter a character \n");
         String a = str.next();
 
         for(int i = 0; i < a.length(); i++) {
@@ -20,9 +20,9 @@ public class Line_1
             }
         }
 
-        System.out.println(sum);
+        System.out.println("sum is:"+sum);
         System.out.println();
-      //     System.exit(0);
+       // System.exit(0);
 
     }
 

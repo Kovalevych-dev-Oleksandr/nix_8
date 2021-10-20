@@ -10,6 +10,7 @@ public class Line_serc
 {
     public void run (BufferedReader reader) throws IOException
     {
+        System.out.println("Enter a character");
         Scanner con = new Scanner(System.in);
 
         String s = con.nextLine();
@@ -39,6 +40,7 @@ public class Line_serc
         }System.out.println(numChars);
 
         System.out.println();
+       // System.exit(0);
     }
 }
 

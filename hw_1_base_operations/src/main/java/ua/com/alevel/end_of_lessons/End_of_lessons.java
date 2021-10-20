@@ -8,6 +8,7 @@ public class End_of_lessons {
 
     public void run (BufferedReader reader) throws IOException
     {
+        System.out.println("Enter a character 1-10");
         Scanner integ = new Scanner(System.in);
         int a = integ.nextInt();
         a = a * 45 + (a / 2) * 5 + ((a + 1) / 2 - 1) * 15;
