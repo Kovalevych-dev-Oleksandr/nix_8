@@ -1,4 +1,4 @@
-package ua.com.alevel.hw_line_serc;
+package ua.com.alevel;
 
 import java.io.PrintStream;
 import java.io.Reader;

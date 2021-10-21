@@ -1,13 +1,14 @@
 package ua.com.alevel.hw_line_serc;
 
+import ua.com.alevel.EventProcessor;
+
 import java.io.PrintStream;
 import java.io.Reader;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
-public class LineTwo implements EventProcessor
-{
+public class LineTwo implements EventProcessor {
     private static final int B = 26;
 
     @Override

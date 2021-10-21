@@ -1,13 +1,12 @@
 package ua.com.alevel.end_of_lessons;
 
-import ua.com.alevel.hw_line_serc.EventProcessor;
+import ua.com.alevel.EventProcessor;
 
 import java.io.PrintStream;
 import java.io.Reader;
 import java.util.Scanner;
 
-public class EndOfLessons implements EventProcessor
-{
+public class EndOfLessons implements EventProcessor {
     public void process(Reader reader, PrintStream writer) {
         writer.println("Enter a character 1-10");
         Scanner integ = new Scanner(System.in);
