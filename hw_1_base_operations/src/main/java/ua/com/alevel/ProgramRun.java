@@ -11,12 +11,7 @@ public class ProgramRun {
     public static void run()
     {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        System.out.println(" If you need the first task, choose 1");
-        System.out.println(" If you need a second task, choose 2 ");
-        System.out.println("If you need a third task, choose 3 ");
-        System.out.println(" If you want to finish, select 0");
-        System.out.println("Select you event: ");
-        System.out.println();
+        print();
         String event;
         try
         {
@@ -57,6 +52,16 @@ public class ProgramRun {
         }
 
 
+
+    }
+    public static void print()
+    {
+        System.out.println(" If you need the first task, choose 1");
+        System.out.println(" If you need a second task, choose 2 ");
+        System.out.println("If you need a third task, choose 3 ");
+        System.out.println(" If you want to finish, select 0");
+        System.out.println("Select you event: ");
+        System.out.println();
     }
 
 }
