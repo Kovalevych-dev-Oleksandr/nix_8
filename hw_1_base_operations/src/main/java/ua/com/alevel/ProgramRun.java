@@ -7,26 +7,30 @@ import ua.com.alevel.hw_line_serc.LineTwo;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
+import java.util.Arrays;
+
+import static java.lang.System.*;
 
 
 public class ProgramRun {
     public static void run() {
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        final BufferedReader reader = new BufferedReader(new InputStreamReader(in, StandardCharsets.UTF_8));
         print();
         String event;
         try {
             while ((event = reader.readLine()) != null) {
-                EventProcessor eventProcessor = getEvent(event);
+                final EventProcessor eventProcessor = ProgramRun.getEvent(event);
                 if (eventProcessor != null) {
-                    eventProcessor.process(reader, System.out);
+                    eventProcessor.process(reader, out);
                 }
             }
-        } catch (IOException e) {
+        } catch (final IOException e) {
             e.printStackTrace();
         }
     }
 
-    private static EventProcessor getEvent(String event) {
+    private static EventProcessor getEvent(final String event) {
         if ("1".equals(event)) {
             return new LineOne();
 
@@ -40,18 +44,16 @@ public class ProgramRun {
         }
 
         if ("4".equals(event)) {
-            System.exit(0);
+            exit(0);
         }
         return null;
     }
 
     public static void print() {
-        System.out.println("If you need the first task, choose 1");
-        System.out.println("If you need a second task, choose 2 ");
-        System.out.println("If you need a third task, choose 3 ");
-        System.out.println("If you want to finish, select 4");
-        System.out.println("Select you event: ");
-        System.out.println();
+        out.println("If you need the first task, choose 1");
+        for (final String s : Arrays.asList("If you need a second task, choose 2 ", "If you need a third task, choose 3 ", "If you want to finish, select 4", "Select you event: ")) {
+            out.println(s);
+        }
     }
 
 }
