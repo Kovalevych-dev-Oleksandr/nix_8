@@ -9,6 +9,7 @@ import java.util.Map;
 import java.util.Scanner;
 
 public class LineTwo implements EventProcessor {
+
     private static final int B = 26;
 
     @Override
