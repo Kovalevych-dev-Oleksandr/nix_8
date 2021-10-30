@@ -3,7 +3,6 @@ package ua.com.alevel;
 public class User {
     private String name;
     private int age;
-
     public String getName() {
         return this.name;
     }
@@ -22,9 +21,9 @@ public class User {
 
     @Override
     public String toString() {
-        return "user{" +
-                "name='" + name + '\'' +
-                ", age=" + age +
+        return "User{" +
+                "name=" + name + '\'' +
+                ",age=" + age +
                 '}';
     }
 }
