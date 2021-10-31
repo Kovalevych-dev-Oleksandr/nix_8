@@ -17,22 +17,22 @@ import static java.lang.System.*;
 
 public class ProgramRun {
     public static void run() {
-        final BufferedReader reader = new BufferedReader(new InputStreamReader(in, StandardCharsets.UTF_8));
-        print();
+        BufferedReader reader = new BufferedReader(new InputStreamReader(in, StandardCharsets.UTF_8));
+        ProgramRun.print();
         String event;
         try {
             while ((event = reader.readLine()) != null) {
-                final EventProcessor eventProcessor = ProgramRun.getEvent(event);
+                EventProcessor eventProcessor = getEvent(event);
                 if (eventProcessor != null) {
                     eventProcessor.process(reader, out);
                 }
             }
-        } catch (final IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    private static EventProcessor getEvent(final String event) {
+    private static EventProcessor getEvent(String event) {
         if ("1".equals(event)) {
             return new BaseReverse();
 
@@ -54,9 +54,9 @@ public class ProgramRun {
         return null;
     }
 
-    public static void print() {
+    private static void print() {
         out.println("If you need the first task, choose 1");
-        for (final String s : Arrays.asList("If you need a second task, choose 2 ", "If you need a third task, choose 3 ", "If you want to finish, select 4", "Select you event: ")) {
+        for (String s : Arrays.asList("If you need a second task, choose 2 ", "If you need a third task, choose 3 ", "If you want to finish, select 4", "Select you event: ")) {
             out.println(s);
         }
     }
