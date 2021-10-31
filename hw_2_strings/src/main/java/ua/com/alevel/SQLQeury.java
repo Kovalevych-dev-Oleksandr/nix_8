@@ -16,7 +16,7 @@ public class SQLQeury {
     }
 
     public String qenerateBuilderStringSql(Class<?> aClass) {
-        StringBuilder query =new StringBuilder( "insert * from " + aClass.getName() + "s" + "where ");
+        StringBuilder query = new StringBuilder("insert * from " + aClass.getName() + "s" + "where ");
         Field[] fields = aClass.getDeclaredFields();
         for (Field field : fields) {
             query.append(field.getName() + " test1 ");
