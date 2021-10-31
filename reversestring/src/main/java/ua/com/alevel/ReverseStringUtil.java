@@ -29,32 +29,47 @@ public final class ReverseStringUtil {
     public static String reverseSpecifiedWordInLine(String usersString, int indexArray) {
         String reverseUsersString = "";
         String[] array = usersString.split("\\s+");
-        for (int i = 0; i < array.length; i++) {
-            if (i == indexArray) {
-                reverseUsersString = reverseUsersString + reverseString(array[i]);
-            } else {
-                reverseUsersString = reverseUsersString + array[i] + " ";
-            }
-        }
+        if (indexArray<= array.length && indexArray>=1){
+            for (int i = 0; i < array.length; i++) {
+             if (i == indexArray) {
+                   reverseUsersString = reverseUsersString + reverseString(array[i]);
+             } else {
+                  reverseUsersString = reverseUsersString + array[i] + " ";
+             }
+             }
+
+            }else{return "An existing word number has been entered";}
+
         return reverseUsersString;
     }
 
     public static String reverseSpecifiedLetterInString(String usersString, int indexLetterArrayFirst, int indexLetterArrayLast) {
         String reverseUsersString = "";
         char[] array = usersString.toCharArray();
-        for (int i=0;i<indexLetterArrayFirst;i++){
-            reverseUsersString = reverseUsersString + array[i];
-        }
-        for (int i = indexLetterArrayLast; i >= indexLetterArrayFirst; i--) {
-            reverseUsersString = reverseUsersString + array[i];
-        }
-        for(int i=indexLetterArrayLast;i<array.length;i++){
-            reverseUsersString = reverseUsersString + array[i];
-        }
-
+         if(сheckingTheIndex(indexLetterArrayFirst,array.length)==true && сheckingTheIndex(indexLetterArrayLast,array.length)==true ){
+            for (int i = 0; i < indexLetterArrayFirst; i++) {
+                reverseUsersString = reverseUsersString + array[i];
+            }
+            for (int i = indexLetterArrayLast; i >= indexLetterArrayFirst; i--) {
+                reverseUsersString = reverseUsersString + array[i];
+            }
+            for (int i = indexLetterArrayLast; i < array.length; i++) {
+                reverseUsersString = reverseUsersString + array[i];
+            }
+        }else{return " The entered element numbers do not match the existing ones in the array";}
 
         return reverseUsersString + " ";
 
+    }
+    //if(indexLetterArrayFirst<=array.length && indexLetterArrayLast<=array.length && indexLetterArrayLast>=0 && indexLetterArrayFirst=>0)
+    public static boolean сheckingTheIndex (int index, int size){
+        boolean result;
+        if (index<=size && index>=0) {
+            result = true;
+        }else {
+            result =false;
+        }
+        return result;
     }
 
 }

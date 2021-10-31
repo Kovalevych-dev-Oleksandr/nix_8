@@ -56,7 +56,7 @@ public class ProgramRun {
 
     private static void print() {
         out.println("If you need BaseReverse, choose 1");
-        for (String s : Arrays.asList("If you need a reverse by words, choose 2 ", "If you need a choose a word to reverse, choose 3 ", "If you need areverse of letters in a lineselect 4 ","If you want to finish, select 5","Select you event: ")) {
+        for (String s : Arrays.asList("If you need a reverse by words, choose 2 ", "If you need a choose a word to reverse, choose 3 ", "If you need areverse of letters in a lineselect 4 ", "If you want to finish, select 5", "Select you event: ")) {
             out.println(s);
         }
     }

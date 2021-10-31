@@ -18,9 +18,9 @@ public class ReverseOfTheSpecifiedWordInTheLine implements EventProcessor {
         String userString = str.nextLine();
 
         writer.println("Enter word number");
-        int  wordInArray = str.nextInt();
+        int wordInArray = str.nextInt();
 
-        writer.println(reverseSpecifiedWordInLine(userString, wordInArray-1));
+        writer.println(reverseSpecifiedWordInLine(userString, wordInArray - 1));
         writer.println();
         writer.println("Select you event: ");
     }
