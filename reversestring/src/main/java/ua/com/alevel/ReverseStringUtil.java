@@ -42,20 +42,19 @@ public final class ReverseStringUtil {
     public static String reverseSpecifiedLetterInString(String usersString, int indexLetterArrayFirst, int indexLetterArrayLast) {
         String reverseUsersString = "";
         char[] array = usersString.toCharArray();
-        /*for (int i=0;i<indexLetterArrayFirst-1;i++){
+        for (int i=0;i<indexLetterArrayFirst;i++){
             reverseUsersString = reverseUsersString + array[i];
-        }*/
+        }
         for (int i = indexLetterArrayLast; i >= indexLetterArrayFirst; i--) {
             reverseUsersString = reverseUsersString + array[i];
         }
-        /*for(int i=indexLetterArrayLast-1;i<array.length-1;i++){
+        for(int i=indexLetterArrayLast;i<array.length;i++){
             reverseUsersString = reverseUsersString + array[i];
-        }*/
+        }
 
 
         return reverseUsersString + " ";
 
     }
-
 
 }
