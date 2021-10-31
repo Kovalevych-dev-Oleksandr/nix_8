@@ -1,4 +1,4 @@
-package ua.com.alevel.flip_according_to_the_word_order;
+package ua.com.alevel.reverse_of_the_specified_word_in_the_line;
 
 import ua.com.alevel.EventProcessor;
 
@@ -6,27 +6,22 @@ import java.io.PrintStream;
 import java.io.Reader;
 import java.util.Scanner;
 
-import static ua.com.alevel.ReverseStringUtil.reverseWordString;
+import static ua.com.alevel.ReverseStringUtil.reverseSpecifiedWordInLine;
 
-public class FlipAccordingToTheWordOrder implements EventProcessor {
 
+public class ReverseOfTheSpecifiedWordInTheLine implements EventProcessor {
     @Override
     public void process(Reader reader, PrintStream writer) {
-
         Scanner str = new Scanner(System.in);
+
         writer.println("Enter a character");
         String userString = str.nextLine();
 
-        writer.println(reverseWordString(userString));
+        writer.println("Enter word number");
+        int  wordInArray = str.nextInt();
+
+        writer.println(reverseSpecifiedWordInLine(userString, wordInArray-1));
         writer.println();
         writer.println("Select you event: ");
     }
 }
-
-
-
-
-
-
-
-

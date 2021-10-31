@@ -3,6 +3,8 @@ package ua.com.alevel;
 
 import ua.com.alevel.base_reverse.BaseReverse;
 import ua.com.alevel.flip_according_to_the_word_order.FlipAccordingToTheWordOrder;
+import ua.com.alevel.reverse_of_the_specified_word_in_the_line.ReverseOfTheSpecifiedWordInTheLine;
+import ua.com.alevel.reverse_specified_letter.ReverseSpecifiedLetter;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -39,11 +41,14 @@ public class ProgramRun {
         if ("2".equals(event)) {
             return new FlipAccordingToTheWordOrder();
         }
-        /*if ("3".equals(event)) {
-            return new EndOfLessons();
-        }*/
-
+        if ("3".equals(event)) {
+            return new ReverseOfTheSpecifiedWordInTheLine();
+        }
         if ("4".equals(event)) {
+            return new ReverseSpecifiedLetter();
+        }
+
+        if ("5".equals(event)) {
             exit(0);
         }
         return null;
