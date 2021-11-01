@@ -9,9 +9,9 @@ import java.util.Scanner;
 import static ua.com.alevel.ReverseStringUtil.reverseString;
 
 public class BaseReverse implements EventProcessor {
+
     @Override
     public void process(Reader reader, PrintStream writer) {
-
         Scanner str = new Scanner(System.in);
         writer.println("Enter a character");
         String userString = str.nextLine();
@@ -21,10 +21,3 @@ public class BaseReverse implements EventProcessor {
         writer.println("Select you event: ");
     }
 }
-
-
-
-
-
-
-

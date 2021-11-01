@@ -3,10 +3,8 @@ package ua.com.alevel;
 public final class ReverseStringUtil {
 
     public static String reverseString(String usersString) {
-
         char[] array = usersString.toCharArray();
         String reverseUsersString = "";
-
 
         for (int i = array.length - 1; i >= 0; i--) {
             reverseUsersString = reverseUsersString + array[i];
@@ -34,11 +32,9 @@ public final class ReverseStringUtil {
                     reverseUsersString = reverseUsersString + array[i] + " ";
                 }
             }
-
         } else {
             return "An existing word number has been entered";
         }
-
         return reverseUsersString;
     }
 
@@ -58,9 +54,7 @@ public final class ReverseStringUtil {
         } else {
             return " The entered element numbers do not match the existing ones in the array";
         }
-
         return reverseUsersString + " ";
-
     }
 
     //if(indexLetterArrayFirst<=array.length && indexLetterArrayLast<=array.length && indexLetterArrayLast>=0 && indexLetterArrayFirst=>0)
@@ -73,5 +67,4 @@ public final class ReverseStringUtil {
         }
         return result;
     }
-
 }

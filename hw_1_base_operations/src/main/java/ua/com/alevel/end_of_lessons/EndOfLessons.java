@@ -7,6 +7,7 @@ import java.io.Reader;
 import java.util.Scanner;
 
 public class EndOfLessons implements EventProcessor {
+
     public void process(Reader reader, PrintStream writer) {
         final int b=60;
         writer.println("Enter a character 1-10");

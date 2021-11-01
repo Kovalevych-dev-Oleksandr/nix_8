@@ -14,6 +14,7 @@ import static java.lang.System.*;
 
 
 public class ProgramRun {
+
     public static void run() {
         final BufferedReader reader = new BufferedReader(new InputStreamReader(in, StandardCharsets.UTF_8));
         print();
@@ -55,5 +56,4 @@ public class ProgramRun {
             out.println(s);
         }
     }
-
 }

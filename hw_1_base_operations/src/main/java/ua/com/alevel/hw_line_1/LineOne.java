@@ -6,8 +6,8 @@ import java.io.PrintStream;
 import java.io.Reader;
 import java.util.Scanner;
 
-
 public class LineOne implements EventProcessor {
+
     @Override
     public void process(Reader reader, PrintStream writer) {
         int sum = 0;
