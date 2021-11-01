@@ -12,7 +12,6 @@ public class FlipAccordingToTheWordOrder implements EventProcessor {
 
     @Override
     public void process(Reader reader, PrintStream writer) {
-
         Scanner str = new Scanner(System.in);
         writer.println("Enter a character");
         String userString = str.nextLine();
@@ -22,11 +21,3 @@ public class FlipAccordingToTheWordOrder implements EventProcessor {
         writer.println("Select you event: ");
     }
 }
-
-
-
-
-
-
-
-

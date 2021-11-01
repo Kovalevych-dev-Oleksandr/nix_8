@@ -1,6 +1,5 @@
 package ua.com.alevel;
 
-
 import ua.com.alevel.base_reverse.BaseReverse;
 import ua.com.alevel.flip_according_to_the_word_order.FlipAccordingToTheWordOrder;
 import ua.com.alevel.reverse_of_the_specified_word_in_the_line.ReverseOfTheSpecifiedWordInTheLine;
@@ -14,8 +13,8 @@ import java.util.Arrays;
 
 import static java.lang.System.*;
 
-
 public class ProgramRun {
+
     public static void run() {
         BufferedReader reader = new BufferedReader(new InputStreamReader(in, StandardCharsets.UTF_8));
         ProgramRun.print();
@@ -35,7 +34,6 @@ public class ProgramRun {
     private static EventProcessor getEvent(String event) {
         if ("1".equals(event)) {
             return new BaseReverse();
-
         }
 
         if ("2".equals(event)) {
@@ -60,5 +58,4 @@ public class ProgramRun {
             out.println(s);
         }
     }
-
 }

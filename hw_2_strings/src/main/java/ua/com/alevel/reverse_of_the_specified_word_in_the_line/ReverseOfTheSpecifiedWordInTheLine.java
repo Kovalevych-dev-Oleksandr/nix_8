@@ -8,8 +8,8 @@ import java.util.Scanner;
 
 import static ua.com.alevel.ReverseStringUtil.reverseSpecifiedWordInLine;
 
-
 public class ReverseOfTheSpecifiedWordInTheLine implements EventProcessor {
+
     @Override
     public void process(Reader reader, PrintStream writer) {
         Scanner str = new Scanner(System.in);

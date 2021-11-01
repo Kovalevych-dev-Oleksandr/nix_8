@@ -9,7 +9,6 @@ public class SQLQeury {
         Field[] fields = aClass.getDeclaredFields();
         for (Field field : fields) {
             query += field.getName() + " test1 ";
-
         }
         query += ";";
         return query;
@@ -20,7 +19,6 @@ public class SQLQeury {
         Field[] fields = aClass.getDeclaredFields();
         for (Field field : fields) {
             query.append(field.getName() + " test1 ");
-
         }
         query.append(";");
         return query.toString();//
