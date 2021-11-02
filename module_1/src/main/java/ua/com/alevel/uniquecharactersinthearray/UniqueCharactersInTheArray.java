@@ -29,6 +29,12 @@ public class UniqueCharactersInTheArray implements EventProcessor {
         userArray = new int[sizeArray];
         for (int i = 0; i < sizeArray; i++) {
             writer.println("Enter the " + (i + 1) + " element");
+           /* String userLineArray=str.nextLine();
+            if (checkingTheString(userLineArray) == false) {
+
+                writer.println("Next time enter a number positive number in a string without spaces and characters");
+                return;
+            }*/
             userArray[i] = str.nextInt();
         }
         writer.println("The array created is " + Arrays.toString(userArray));
@@ -75,6 +81,10 @@ public class UniqueCharactersInTheArray implements EventProcessor {
 
     public static int stringToInt(String userString){
         int userInt =Integer.parseInt(userString);
+        return userInt;
+    }
+    public static int stringToIntArray(String userString){
+        int userInt =Integer.parseInt(userString.replaceAll("[^\\d-]", ""));
         return userInt;
     }
 
