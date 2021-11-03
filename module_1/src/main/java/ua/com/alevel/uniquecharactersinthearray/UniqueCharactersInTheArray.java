@@ -1,6 +1,7 @@
 package ua.com.alevel.uniquecharactersinthearray;
 
 import ua.com.alevel.EventProcessor;
+import ua.com.alevel.horsemove.HorseMove;
 
 import java.io.PrintStream;
 import java.io.Reader;
@@ -39,8 +40,8 @@ public class UniqueCharactersInTheArray implements EventProcessor {
             userArray[i] = str.nextInt();
         }
         writer.println("The array created is " + Arrays.toString(userArray));
-       int count=0;
-        int numberRepetitionCounter=0;
+        int count = 0;
+        int numberRepetitionCounter = 0;
         for (int i = 0; i < userArray.length; i++) {
 
             for (int j = i + 1; j < userArray.length; j++) {
@@ -52,21 +53,9 @@ public class UniqueCharactersInTheArray implements EventProcessor {
 
         }
 
-        writer.println("Еhere are unique numbers in the array: "+ (sizeArray - numberRepetitionCounter) );
-        writer.println();
-        writer.println("Select you event: ");
+        writer.println("Еhere are unique numbers in the array: " + (sizeArray - numberRepetitionCounter));
+        HorseMove.printEnd();
     }
-
-
-
-
-
-
-
-
-
-
-
 
 
     public static boolean checkingTheString(String userLine) {
@@ -80,12 +69,13 @@ public class UniqueCharactersInTheArray implements EventProcessor {
         return a;
     }
 
-    public static int stringToInt(String userString){
-        int userInt =Integer.parseInt(userString);
+    public static int stringToInt(String userString) {
+        int userInt = Integer.parseInt(userString);
         return userInt;
     }
-    public static int stringToIntArray(String userString){
-        int userInt =Integer.parseInt(userString.replaceAll("[^\\d-]", ""));
+
+    public static int stringToIntArray(String userString) {
+        int userInt = Integer.parseInt(userString.replaceAll("[^\\d-]", ""));
         return userInt;
     }
 

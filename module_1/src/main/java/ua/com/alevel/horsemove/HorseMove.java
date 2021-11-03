@@ -13,7 +13,6 @@ public class HorseMove implements EventProcessor {
     @Override
     public void process(Reader reader, PrintStream writer) {
 
-
         Scanner str = new Scanner(System.in);
 
         String userStartPositionInRows;
@@ -79,8 +78,6 @@ public class HorseMove implements EventProcessor {
                 } else {
                     System.out.print(" * ");
                 }
-
-
             }
             System.out.println();
         }
@@ -101,7 +98,7 @@ public class HorseMove implements EventProcessor {
         return result;
     }
 
-    public static void printEnd(){
+    public static void printEnd() {
         System.out.println();
         System.out.println("Select you event: ");
     }
