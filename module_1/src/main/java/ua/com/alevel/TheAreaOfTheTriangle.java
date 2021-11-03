@@ -39,12 +39,11 @@ public class TheAreaOfTheTriangle implements EventProcessor {
                 return;
             }
         } else {
-            writer.println("Next time enter a integer number without symbols and spaces ");
+            writer.println("Next time enter a integer number without symbols and spaces");
             HorseMove.printEnd();
 
             return;
         }
-
         HorseMove.printEnd();
 
     }
