@@ -1,6 +1,7 @@
 package ua.com.alevel.firstlevel;
 
 import ua.com.alevel.EventProcessor;
+import ua.com.alevel.horsemove.HorseMove;
 import ua.com.alevel.uniquecharactersinthearray.UniqueCharactersInTheArray;
 
 import java.io.BufferedReader;
@@ -36,7 +37,7 @@ public class ProgramLevelOneRun {
         }
 
         if ("2".equals(event)) {
-            //return new FlipAccordingToTheWordOrder();
+            return new HorseMove();
         }
         if ("3".equals(event)) {
             //return new ReverseOfTheSpecifiedWordInTheLine();
@@ -53,7 +54,7 @@ public class ProgramLevelOneRun {
 
     private static void print() {
         out.println("If you need Unique Characters In The Array, choose 1");
-        for (String s : Arrays.asList("If you need a reverse by words, choose 2 ", "If you need a choose a word to reverse, choose 3 ", "If you need areverse of letters in a lineselect 4 ", "If you want to finish, select 5", "Select you event: ")) {
+        for (String s : Arrays.asList("If you need task Horse move, choose 2 ", "If you need a choose a word to reverse, choose 3 ", "If you need areverse of letters in a lineselect 4 ", "If you want to finish, select 5", "Select you event: ")) {
             out.println(s);
         }
     }

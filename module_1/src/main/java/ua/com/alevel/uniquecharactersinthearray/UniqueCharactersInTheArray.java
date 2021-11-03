@@ -19,6 +19,7 @@ public class UniqueCharactersInTheArray implements EventProcessor {
         if (checkingTheString(userLine) == false) {
 
             writer.println("Next time enter a number positive number in a string without spaces and characters");
+            writer.println("Select you event: ");
             return;
 
         }
