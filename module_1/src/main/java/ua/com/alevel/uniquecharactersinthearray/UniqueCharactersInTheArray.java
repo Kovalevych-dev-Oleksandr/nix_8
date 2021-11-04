@@ -20,7 +20,7 @@ public class UniqueCharactersInTheArray implements EventProcessor {
         if (checkingTheString(userLine) == false) {
 
             writer.println("Next time enter a number positive number in a string without spaces and characters");
-            writer.println("Select you event: ");
+            HorseMove.printEnd();
             return;
 
         }
@@ -31,13 +31,15 @@ public class UniqueCharactersInTheArray implements EventProcessor {
         userArray = new int[sizeArray];
         for (int i = 0; i < sizeArray; i++) {
             writer.println("Enter the " + (i + 1) + " element");
-           /* String userLineArray=str.nextLine();
+            String userLineArray=str.nextLine();
             if (checkingTheString(userLineArray) == false) {
 
                 writer.println("Next time enter a number positive number in a string without spaces and characters");
+                HorseMove.printEnd();
                 return;
-            }*/
-            userArray[i] = str.nextInt();
+            }else{
+                userArray[i] = str.nextInt();
+            }
         }
         writer.println("The array created is " + Arrays.toString(userArray));
         int count = 0;

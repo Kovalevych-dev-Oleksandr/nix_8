@@ -43,8 +43,7 @@ public class TheAreaOfTheTriangle implements EventProcessor {
             HorseMove.printEnd();
 
             return;
-        }
-        HorseMove.printEnd();
+        }        HorseMove.printEnd();
 
     }
 
