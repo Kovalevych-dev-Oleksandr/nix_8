@@ -51,8 +51,8 @@ public class ProgramLevelOneRun {
         if ("5".equals(event)) {
             return new MaximumDepthOfABinaryTree();
         }
-        if ("5".equals(event)) {
-           // return new TheAreaOfTheTriangle();
+        if ("6".equals(event)) {
+           //return new TheAreaOfTheTriangle();
         }
 
         if ("7".equals(event)) {
