@@ -36,31 +36,30 @@ public class TheAreaOfTheTriangle implements EventProcessor {
         writer.println("Enter the a positive integer coordinate C (Y)");
         coordinateCY = str.nextLine();
 
-        Coordinate A =new Coordinate();
-        Coordinate B =new Coordinate();
-        Coordinate C =new Coordinate();
+        Coordinate A = new Coordinate();
+        Coordinate B = new Coordinate();
+        Coordinate C = new Coordinate();
 
         if (UniqueCharactersInTheArray.checkingTheString(coordinateAX) == true
                 && UniqueCharactersInTheArray.checkingTheString(coordinateAY) == true
                 && UniqueCharactersInTheArray.checkingTheString(coordinateBX) == true
-                && UniqueCharactersInTheArray.checkingTheString(coordinateBY)==true
-                && UniqueCharactersInTheArray.checkingTheString(coordinateCX)==true
-                && UniqueCharactersInTheArray.checkingTheString(coordinateCY)==true) {
+                && UniqueCharactersInTheArray.checkingTheString(coordinateBY) == true
+                && UniqueCharactersInTheArray.checkingTheString(coordinateCX) == true
+                && UniqueCharactersInTheArray.checkingTheString(coordinateCY) == true) {
 
-                A.setX(Integer.parseInt(coordinateAX));
-                A.setY(Integer.parseInt(coordinateAY));
-                B.setX(Integer.parseInt(coordinateBX));
-                B.setY(Integer.parseInt(coordinateBY));
-                C.setX(Integer.parseInt(coordinateCX));
-                C.setY(Integer.parseInt(coordinateCY));
-                if (TriangleAreaCalculator.calculateArea(A,B,C)==0){
-                    writer.println("There is no such triangle");
-                    HorseMove.printEnd();
-                    return;
-                }else {
-                    writer.println("Square :"+TriangleAreaCalculator.calculateArea(A,B,C)+"M^2");
-                }
-
+            A.setX(Integer.parseInt(coordinateAX));
+            A.setY(Integer.parseInt(coordinateAY));
+            B.setX(Integer.parseInt(coordinateBX));
+            B.setY(Integer.parseInt(coordinateBY));
+            C.setX(Integer.parseInt(coordinateCX));
+            C.setY(Integer.parseInt(coordinateCY));
+            if (TriangleAreaCalculator.calculateArea(A, B, C) == 0) {
+                writer.println("There is no such triangle");
+                HorseMove.printEnd();
+                return;
+            } else {
+                writer.println("Square :" + TriangleAreaCalculator.calculateArea(A, B, C) + "M^2");
+            }
 
 
         } else {
@@ -74,7 +73,6 @@ public class TheAreaOfTheTriangle implements EventProcessor {
         HorseMove.printEnd();
 
     }
-
 
 
 }

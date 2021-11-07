@@ -13,22 +13,15 @@ public class CheckingAStringContainingCharacters implements EventProcessor {
         Scanner str = new Scanner(System.in);
         writer.println("Enter the text with in the correct order of closing brackets, or don't enter anything");
         String userLine = str.nextLine();
-        if (isValidBrackets(userLine)==true){
+        if (isValidBrackets(userLine) == true) {
             writer.println("Your string passed the test perfectly!");
-        }else{
+        } else {
             writer.println(" Unfortunately, your string failed validation!");
             HorseMove.printEnd();
             return;
         }
         HorseMove.printEnd();
     }
-
-
-
-
-
-
-
 
 
     private static boolean isValidBrackets(String userLine) {

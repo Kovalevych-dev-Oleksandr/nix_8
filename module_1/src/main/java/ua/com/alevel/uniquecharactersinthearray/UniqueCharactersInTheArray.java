@@ -32,12 +32,12 @@ public class UniqueCharactersInTheArray implements EventProcessor {
         userArray = new int[sizeArray];
         for (int i = 0; i < sizeArray; i++) {
             writer.println("Enter the " + (i + 1) + " element:");
-            userLine=str.nextLine();
+            userLine = str.nextLine();
             if (checkingTheString(userLine) == false) {
                 writer.println("Next time enter a number positive number in a string without spaces and characters");
                 HorseMove.printEnd();
                 return;
-            }else{
+            } else {
                 userArray[i] = stringToInt(userLine);
             }
         }
@@ -70,12 +70,12 @@ public class UniqueCharactersInTheArray implements EventProcessor {
         }
         return a;
     }
-    public boolean isInteger( String input ) {
+
+    public boolean isInteger(String input) {
         try {
-            Integer.parseInt( input );
+            Integer.parseInt(input);
             return true;
-        }
-        catch( Exception e ) {
+        } catch (Exception e) {
             return false;
         }
     }

@@ -1,8 +1,8 @@
 package ua.com.alevel;
 
-import ua.com.alevel.EventProcessor;
 import ua.com.alevel.checkingastringcontainingcharacters.CheckingAStringContainingCharacters;
 import ua.com.alevel.horsemove.HorseMove;
+import ua.com.alevel.lifegame.LifeGame;
 import ua.com.alevel.maximumdepthforagiventree.MaximumDepthOfABinaryTree;
 import ua.com.alevel.theareaoftriangle.TheAreaOfTheTriangle;
 import ua.com.alevel.uniquecharactersinthearray.UniqueCharactersInTheArray;
@@ -52,7 +52,7 @@ public class ProgramLevelOneRun {
             return new MaximumDepthOfABinaryTree();
         }
         if ("6".equals(event)) {
-           //return new TheAreaOfTheTriangle();
+            return new LifeGame();
         }
 
         if ("7".equals(event)) {
@@ -63,7 +63,7 @@ public class ProgramLevelOneRun {
 
     private static void print() {
         out.println("If you need Unique Characters In The Array, choose 1");
-        for (String s : Arrays.asList("If you need task Horse move, choose 2 ", "If you need  The Area Of The Triangle, choose 3 ", "If you need Checking A String Containing Characters, choose 4 "," If you need Maximum depth of a binary tree, choose 5","If you need Play in lave, choose 6","If you want to finish, select 7", "Select you event: ")) {
+        for (String s : Arrays.asList("If you need task Horse move, choose 2 ", "If you need  The Area Of The Triangle, choose 3 ", "If you need Checking A String Containing Characters, choose 4 ", " If you need Maximum depth of a binary tree, choose 5", "If you need Play in lave, choose 6", "If you want to finish, select 7", "Select you event: ")) {
             out.println(s);
         }
     }

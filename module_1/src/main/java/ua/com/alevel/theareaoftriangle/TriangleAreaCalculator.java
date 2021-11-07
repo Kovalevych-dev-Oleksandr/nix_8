@@ -13,7 +13,7 @@ public class TriangleAreaCalculator {
         double y2 = b.getY();
         double y3 = c.getY();
 
-;
+        ;
 
         double sideA = Math.sqrt((x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2));
         double sideB = Math.sqrt((x1 - x3) * (x1 - x3) + (y1 - y3) * (y1 - y3));
@@ -25,7 +25,7 @@ public class TriangleAreaCalculator {
         double p = (sideA + sideB + sideC) / 2.0;
         double square = Math.sqrt(p * (p - sideA) * (p - sideB) * (p - sideC));
 
-       // return S;
+        // return S;
         return square;
     }
 }

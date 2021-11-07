@@ -1,8 +1,7 @@
 package ua.com.alevel.maximumdepthforagiventree;
 
 public class Solution {
-    public static int maxDepth(TreeNode root)
-    {
+    public static int maxDepth(TreeNode root) {
         if (root == null)
             return 0;
 
