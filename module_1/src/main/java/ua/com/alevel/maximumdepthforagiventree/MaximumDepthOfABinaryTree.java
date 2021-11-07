@@ -13,7 +13,7 @@ public class MaximumDepthOfABinaryTree implements EventProcessor {
     public void process(final Reader reader, PrintStream writer) {
 
         Scanner str = new Scanner(System.in);
-        // String userLine = str.nextLine();
+
 
         TreeNode p = new TreeNode(5);
         p.left = new TreeNode(4);
