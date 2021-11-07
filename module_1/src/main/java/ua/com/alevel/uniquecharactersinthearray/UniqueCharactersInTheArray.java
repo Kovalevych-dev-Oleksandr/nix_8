@@ -1,5 +1,6 @@
 package ua.com.alevel.uniquecharactersinthearray;
 
+
 import ua.com.alevel.EventProcessor;
 import ua.com.alevel.horsemove.HorseMove;
 
@@ -30,15 +31,14 @@ public class UniqueCharactersInTheArray implements EventProcessor {
         int userArray[];
         userArray = new int[sizeArray];
         for (int i = 0; i < sizeArray; i++) {
-            writer.println("Enter the " + (i + 1) + " element");
-            String userLineArray=str.nextLine();
-            if (checkingTheString(userLineArray) == false) {
-
+            writer.println("Enter the " + (i + 1) + " element:");
+            userLine=str.nextLine();
+            if (checkingTheString(userLine) == false) {
                 writer.println("Next time enter a number positive number in a string without spaces and characters");
                 HorseMove.printEnd();
                 return;
             }else{
-                userArray[i] = str.nextInt();
+                userArray[i] = stringToInt(userLine);
             }
         }
         writer.println("The array created is " + Arrays.toString(userArray));
@@ -55,7 +55,7 @@ public class UniqueCharactersInTheArray implements EventProcessor {
 
         }
 
-        writer.println("Еhere are unique numbers in the array: " + (sizeArray - numberRepetitionCounter));
+        writer.println("There are unique numbers in the array: " + (sizeArray - numberRepetitionCounter));
         HorseMove.printEnd();
     }
 
@@ -69,6 +69,15 @@ public class UniqueCharactersInTheArray implements EventProcessor {
             }
         }
         return a;
+    }
+    public boolean isInteger( String input ) {
+        try {
+            Integer.parseInt( input );
+            return true;
+        }
+        catch( Exception e ) {
+            return false;
+        }
     }
 
     public static int stringToInt(String userString) {

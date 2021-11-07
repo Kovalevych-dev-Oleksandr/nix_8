@@ -1,6 +1,6 @@
 package ua.com.alevel;
 
-import ua.com.alevel.firstlevel.ProgramLevelOneRun;
+import ua.com.alevel.ProgramLevelOneRun;
 
 public class ModuleOneMain {
 

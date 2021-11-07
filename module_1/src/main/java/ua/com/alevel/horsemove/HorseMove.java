@@ -28,14 +28,22 @@ public class HorseMove implements EventProcessor {
         userStartPositionInRows = str.nextLine();
 
         if (UniqueCharactersInTheArray.checkingTheString(userStartPositionInCols) == true && UniqueCharactersInTheArray.checkingTheString(userStartPositionInRows) == true) {
+           if (checString(Integer.parseInt(userStartPositionInCols))==true && checString(Integer.parseInt(userStartPositionInRows))==true){
             printChess(Integer.parseInt(userStartPositionInCols), Integer.parseInt(userStartPositionInRows));
             writer.println("This is horse (!2!)");
+           }else{
+               writer.println("The number must be greater than 1 and less than 8");
+               HorseMove.printEnd();
+               return;
+           }
         } else {
             writer.println("Next time enter a number from one to eight in a string ");
             printEnd();
             return;
         }
 
+        String check="r";
+        while (check!="q"){
         writer.println("Select a Next position");
         writer.println("Enter a Cols:");
         userNextPositionInCols = str.nextLine();
@@ -44,24 +52,34 @@ public class HorseMove implements EventProcessor {
 
 
         if (UniqueCharactersInTheArray.checkingTheString(userNextPositionInCols) == true && UniqueCharactersInTheArray.checkingTheString(userNextPositionInRows) == true) {
-
+            if (checString(Integer.parseInt(userNextPositionInCols))==true && checString(Integer.parseInt(userNextPositionInRows))==true){
             if (checkingTheHorseCourse(Integer.parseInt(userStartPositionInCols), Integer.parseInt(userNextPositionInCols), Integer.parseInt(userStartPositionInRows), Integer.parseInt(userNextPositionInRows)) == true) {
 
                 writer.println("Step is possible");
                 printChess(Integer.parseInt(userNextPositionInCols), Integer.parseInt(userNextPositionInRows));
+            }else {
+                writer.println("Step is not possible");
+                HorseMove.printEnd();
+                return;
+            }
 
             } else {
                 writer.println("Step is not possible");
                 printEnd();
                 return;
             }
-            printEnd();
+          //  printEnd();
         } else {
             writer.println("Next time enter a number from one to eight in a string ");
             printEnd();
             return;
 
         }
+        writer.println("If you want to continue, enter any number or letter, if not, enter 'r'");
+            check=str.nextLine();
+        }
+        printEnd();
+
     }
 
 
@@ -93,12 +111,14 @@ public class HorseMove implements EventProcessor {
         return result;
     }
 
-  /*  public static boolean TestuserString(String userLine) {
-
-        final boolean result = UniqueCharactersInTheArray.checkingTheString(userLine) == true;
-
+    public static boolean checString(int userLine){
+        boolean result=false;
+        if (userLine >= 1 && userLine <=8){
+            result =true;
+        }
         return result;
-    }*/
+    }
+
 
     public static void printEnd() {
         System.out.println();
