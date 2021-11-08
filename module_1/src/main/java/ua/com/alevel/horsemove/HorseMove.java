@@ -8,7 +8,7 @@ import java.io.Reader;
 import java.util.Scanner;
 
 public class HorseMove implements EventProcessor {
-    static final int SIZE_ROLS_AND_COLS = 8;
+    static final int SIZE_ROWS_AND_COLS = 8;
 
     @Override
     public void process(Reader reader, PrintStream writer) {
@@ -19,7 +19,8 @@ public class HorseMove implements EventProcessor {
         String userStartPositionInCols;
         String userNextPositionInRows;
         String userNextPositionInCols;
-
+        String check = "2";
+        while (check != "r") {
         writer.println("The size of your chessboard is 8X8, columns and rows are numbered from 1 to 8, please enter positive numbers from one to eight");
         writer.println("Select a starting position");
         writer.println("Enter a Cols:");
@@ -42,8 +43,7 @@ public class HorseMove implements EventProcessor {
             return;
         }
 
-        String check = "r";
-        while (check != "q") {
+
             writer.println("Select a Next position");
             writer.println("Enter a Cols:");
             userNextPositionInCols = str.nextLine();
@@ -84,8 +84,8 @@ public class HorseMove implements EventProcessor {
 
 
     public static void printChess(int userNextPositionInRows, int userNextPositionInCols) {
-        for (int i = 0; i < SIZE_ROLS_AND_COLS + 1; i++) {
-            for (int j = 0; j < SIZE_ROLS_AND_COLS + 1; j++) {
+        for (int i = 0; i < SIZE_ROWS_AND_COLS + 1; i++) {
+            for (int j = 0; j < SIZE_ROWS_AND_COLS + 1; j++) {
                 if (i == 0 && j == 0) {
                     System.out.print(" ");
                 } else if (i == 0) {

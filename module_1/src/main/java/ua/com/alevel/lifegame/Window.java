@@ -51,8 +51,8 @@ public class Window implements Runnable {
             }
         }
         for (int x = 10; x < 15; x++) {
-            boxes[x][10].cell.status = Status.LIVE;
-            boxes[x][10].setColor();
+            boxes[x][15].cell.status = Status.LIVE;
+            boxes[x][15].setColor();
         }
     }
 
