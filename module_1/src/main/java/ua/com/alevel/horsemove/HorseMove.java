@@ -75,6 +75,10 @@ public class HorseMove implements EventProcessor {
                 return;
 
             }
+
+
+
+
             writer.println("If you want to continue, enter any number or letter, if not, enter 'r'");
             check = str.nextLine();
         }
