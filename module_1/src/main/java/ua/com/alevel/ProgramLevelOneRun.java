@@ -37,7 +37,6 @@ public class ProgramLevelOneRun {
         if ("1".equals(event)) {
             return new UniqueCharactersInTheArray();
         }
-
         if ("2".equals(event)) {
             return new HorseMove();
         }
@@ -47,14 +46,12 @@ public class ProgramLevelOneRun {
         if ("4".equals(event)) {
             return new CheckingAStringContainingCharacters();
         }
-
         if ("5".equals(event)) {
             return new MaximumDepthOfABinaryTree();
         }
         if ("6".equals(event)) {
             return new LifeGame();
         }
-
         if ("7".equals(event)) {
             exit(0);
         }
@@ -68,4 +65,3 @@ public class ProgramLevelOneRun {
         }
     }
 }
-

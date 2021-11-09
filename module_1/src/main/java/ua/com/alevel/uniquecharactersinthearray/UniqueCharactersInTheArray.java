@@ -13,17 +13,14 @@ public class UniqueCharactersInTheArray implements EventProcessor {
 
     @Override
     public void process(Reader reader, PrintStream writer) {
-
         Scanner str = new Scanner(System.in);
         writer.println("Enter the size of the array (positive number, without spaces and characters) that is to be created");
         String userLine = str.nextLine();
 
         if (checkingTheString(userLine) == false) {
-
             writer.println("Next time enter a number positive number in a string without spaces and characters");
             HorseMove.printEnd();
             return;
-
         }
 
         int sizeArray = stringToInt(userLine);
@@ -45,7 +42,6 @@ public class UniqueCharactersInTheArray implements EventProcessor {
         int count = 0;
         int numberRepetitionCounter = 0;
         for (int i = 0; i < userArray.length; i++) {
-
             for (int j = i + 1; j < userArray.length; j++) {
                 if (userArray[i] == userArray[j]) {
                     numberRepetitionCounter++;
@@ -54,11 +50,9 @@ public class UniqueCharactersInTheArray implements EventProcessor {
             }
 
         }
-
         writer.println("There are unique numbers in the array: " + (sizeArray - numberRepetitionCounter));
         HorseMove.printEnd();
     }
-
 
     public static boolean checkingTheString(String userLine) {
         boolean a = true;
@@ -71,25 +65,10 @@ public class UniqueCharactersInTheArray implements EventProcessor {
         return a;
     }
 
-    public boolean isInteger(String input) {
-        try {
-            Integer.parseInt(input);
-            return true;
-        } catch (Exception e) {
-            return false;
-        }
-    }
-
     public static int stringToInt(String userString) {
         int userInt = Integer.parseInt(userString);
         return userInt;
     }
-
-    public static int stringToIntArray(String userString) {
-        int userInt = Integer.parseInt(userString.replaceAll("[^\\d-]", ""));
-        return userInt;
-    }
-
 }
 
 
