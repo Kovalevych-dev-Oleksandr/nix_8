@@ -1,25 +1,22 @@
 package ua.com.alevel.db;
 
-
 import ua.com.alevel.entiti.User;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
-public class UserDB {
+public class SameUserDB {
 
-    private final List<User> users;
-    private static UserDB instance;
+    private final Set<User> users;
+    private static SameUserDB instance;
 
-    private UserDB() {
-        users = new ArrayList<>();
+    private SameUserDB() {
+        users = new HashSet<>();
 
     }
 
-    public static UserDB getInstance() {
+    public static SameUserDB getInstance() {
         if (instance == null) {
-            instance = new UserDB();
+            instance = new SameUserDB();
         }
         return instance;
     }
@@ -49,7 +46,7 @@ public class UserDB {
                 .orElseThrow(() -> new RuntimeException("user not found idiot"));
     }
 
-    public List<User> finalAll() {
+    public Set<User> finalAll() {
         return users;
     }
 

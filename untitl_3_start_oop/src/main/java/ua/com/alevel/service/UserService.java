@@ -1,6 +1,6 @@
 package ua.com.alevel.service;
 
-import ua.com.alevel.Dao.UserDao;
+import ua.com.alevel.dao.UserDao;
 import ua.com.alevel.entiti.User;
 
 import java.util.List;
