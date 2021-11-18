@@ -13,7 +13,6 @@ public class TheAreaOfTheTriangle implements EventProcessor {
 
     @Override
     public void process(Reader reader, PrintStream writer) {
-
         Scanner str = new Scanner(System.in);
         String coordinateAX;
         String coordinateAY;
@@ -60,19 +59,11 @@ public class TheAreaOfTheTriangle implements EventProcessor {
             } else {
                 writer.println("Square :" + TriangleAreaCalculator.calculateArea(A, B, C) + "M^2");
             }
-
-
         } else {
             writer.println("Next time enter a integer number without symbols and spaces");
             HorseMove.printEnd();
-
             return;
         }
-
-
         HorseMove.printEnd();
-
     }
-
-
 }

@@ -20,5 +20,4 @@ public class Coordinate {
     public int getX() {
         return this.x;
     }
-
 }

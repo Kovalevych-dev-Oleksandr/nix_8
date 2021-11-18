@@ -8,12 +8,11 @@ import java.io.Reader;
 import java.util.Scanner;
 
 public class HorseMove implements EventProcessor {
+
     static final int SIZE_ROWS_AND_COLS = 8;
 
     @Override
     public void process(Reader reader, PrintStream writer) {
-
-
         Scanner str = new Scanner(System.in);
 
         String userStartPositionInRows;
@@ -44,18 +43,15 @@ public class HorseMove implements EventProcessor {
                 return;
             }
 
-
             writer.println("Select a Next position");
             writer.println("Enter a Cols:");
             userNextPositionInCols = str.nextLine();
             writer.println("Enter a Rows:");
             userNextPositionInRows = str.nextLine();
 
-
             if (UniqueCharactersInTheArray.checkingTheString(userNextPositionInCols) == true && UniqueCharactersInTheArray.checkingTheString(userNextPositionInRows) == true) {
                 if (checString(Integer.parseInt(userNextPositionInCols)) == true && checString(Integer.parseInt(userNextPositionInRows)) == true) {
                     if (checkingTheHorseCourse(Integer.parseInt(userStartPositionInCols), Integer.parseInt(userNextPositionInCols), Integer.parseInt(userStartPositionInRows), Integer.parseInt(userNextPositionInRows)) == true) {
-
                         writer.println("Step is possible");
                         printChess(Integer.parseInt(userNextPositionInCols), Integer.parseInt(userNextPositionInRows));
                     } else {
@@ -63,7 +59,6 @@ public class HorseMove implements EventProcessor {
                         HorseMove.printEnd();
                         return;
                     }
-
                 } else {
                     writer.println("Step is not possible");
                     printEnd();
@@ -74,17 +69,12 @@ public class HorseMove implements EventProcessor {
                 writer.println("Next time enter a number from one to eight in a string ");
                 printEnd();
                 return;
-
             }
-
-
             writer.println("If you want to continue, enter any number or letter, if not, enter 'r'");
             check = str.nextLine();
         }
         printEnd();
-
     }
-
 
     public static void printChess(int userNextPositionInRows, int userNextPositionInCols) {
         for (int i = 0; i < SIZE_ROWS_AND_COLS + 1; i++) {
@@ -97,7 +87,6 @@ public class HorseMove implements EventProcessor {
                     System.out.print(i);
                 } else if (i == userNextPositionInCols && j == userNextPositionInRows) {
                     System.out.print("!2!");
-
                 } else {
                     System.out.print(" * ");
                 }
@@ -122,11 +111,8 @@ public class HorseMove implements EventProcessor {
         return result;
     }
 
-
     public static void printEnd() {
         System.out.println();
         System.out.println("Select you event: ");
     }
 }
-
-

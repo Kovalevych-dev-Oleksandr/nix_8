@@ -35,7 +35,4 @@ public class Box extends JPanel {
         cell.step2();
         setColor();
     }
-
-    /*public void initCells(int) {
-    }*/
 }
