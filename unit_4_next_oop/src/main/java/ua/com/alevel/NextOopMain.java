@@ -1,9 +1,12 @@
 package ua.com.alevel;
 
+import ua.com.alevel.view.UserController;
+
 public class NextOopMain {
 
     public static void main(String[] args){
-        System.out.println("main");
+       new UserController().run();
 
     }
 }
+//1.15

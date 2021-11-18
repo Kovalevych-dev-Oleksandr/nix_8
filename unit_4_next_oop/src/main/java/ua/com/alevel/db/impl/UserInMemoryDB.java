@@ -1,32 +1,33 @@
-package ua.com.alevel.db;
+package ua.com.alevel.db.impl;
 
+
+import ua.com.alevel.db.BaseDB;
+import ua.com.alevel.db.UserDB;
 import ua.com.alevel.entiti.User;
+import ua.com.alevel.util.DBHelperUtil;
 
-import java.util.HashSet;
-import java.util.Set;
-import java.util.UUID;
+import java.util.ArrayList;
+import java.util.List;
 
-import static ua.com.alevel.util.DBHelperUtil.generateId;
+public class UserInMemoryDB implements UserDB{
 
-public class SameUserDB {
+    private final List<User> users;
+    private static UserInMemoryDB instance;
 
-    private final Set<User> users;
-    private static SameUserDB instance;
-
-    private SameUserDB() {
-        users = new HashSet<>();
+    private UserInMemoryDB() {
+        users = new ArrayList<>();
 
     }
 
-    public static SameUserDB getInstance() {
+    public static UserInMemoryDB getInstance() {
         if (instance == null) {
-            instance = new SameUserDB();
+            instance = new UserInMemoryDB();
         }
         return instance;
     }
 
     public void create(User user) {
-        user.setId(generateId());
+        user.setId(DBHelperUtil.generateId(users));
         users.add(user);
     }
 
@@ -50,9 +51,13 @@ public class SameUserDB {
                 .orElseThrow(() -> new RuntimeException("user not found idiot"));
     }
 
-    public Set<User> finalAll() {
+    public List<User> finalAll() {
         return users;
     }
 
 
+    @Override
+    public boolean existByEmail(String email) {
+        return users.stream().anyMatch(user -> user.getEmail().equals(email));
+    }
 }

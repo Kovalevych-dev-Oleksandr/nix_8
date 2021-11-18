@@ -2,7 +2,7 @@ package ua.com.alevel.dao;
 
 
 
-import ua.com.alevel.db.UserInMemoryDB;
+import ua.com.alevel.db.impl.UserInMemoryDB;
 import ua.com.alevel.entiti.User;
 
 import java.util.List;

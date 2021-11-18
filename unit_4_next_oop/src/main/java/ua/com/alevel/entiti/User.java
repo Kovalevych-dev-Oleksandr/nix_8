@@ -1,8 +1,8 @@
 package ua.com.alevel.entiti;
 
-public class User {
+public class User extends BaseEntity {
 
-//    private String id;
+
     private String name;
     private String email;
     private int age;
@@ -13,14 +13,6 @@ public class User {
 
     public void setEmail(final String email) {
         this.email = email;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
     }
 
     public String getName() {
@@ -42,7 +34,7 @@ public class User {
     @Override
     public String toString() {
         return "User{" +
-                "id='" + id + '\'' +
+                "id='" + super.getId() + '\'' +
                 ", name='" + name + '\'' +
                 ", email='" + email + '\'' +
                 ", age=" + age +
