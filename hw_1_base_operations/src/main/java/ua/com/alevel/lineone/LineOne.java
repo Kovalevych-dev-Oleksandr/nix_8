@@ -1,4 +1,4 @@
-package ua.com.alevel.hw_line_1;
+package ua.com.alevel.lineone;
 
 import ua.com.alevel.EventProcessor;
 

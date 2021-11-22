@@ -1,8 +1,8 @@
 package ua.com.alevel;
 
-import ua.com.alevel.end_of_lessons.EndOfLessons;
-import ua.com.alevel.hw_line_1.LineOne;
-import ua.com.alevel.hw_line_serc.LineTwo;
+import ua.com.alevel.endoflessons.EndOfLessons;
+import ua.com.alevel.lineone.LineOne;
+import ua.com.alevel.lineserc.LineTwo;
 
 import java.io.BufferedReader;
 import java.io.IOException;

@@ -9,12 +9,12 @@
         <version>1.0-SNAPSHOT</version>
     <modules>
         <module>hw_1_base_operations</module>
-        <module>untitled_1_compile</module>
         <module>hw_2_strings</module>
         <module>reversestring</module>
         <module>untitl_3_start_oop</module>
         <module>module_1</module>
         <module>unit_4_next_oop</module>
+        <module>hw_3_start_oop</module>
 
     </modules>
 

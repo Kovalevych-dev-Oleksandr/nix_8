@@ -1,4 +1,4 @@
-package ua.com.alevel.end_of_lessons;
+package ua.com.alevel.endoflessons;
 
 import ua.com.alevel.EventProcessor;
 
