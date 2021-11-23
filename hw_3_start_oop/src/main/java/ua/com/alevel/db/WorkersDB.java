@@ -20,19 +20,36 @@ public class WorkersDB {
         }
         Worker[] oldArray = workers;
         Worker[] newArray = new Worker[oldArray.length + START_ARRAY_SIZE];
+        System.arraycopy(oldArray, 0, workers, 0, oldArray.length);
         workers[oldArray.length] = worker;
     }
 
-    public static void arrayCopy(Worker[] oldArray, Worker newArray[]) {
-        for (int i = 0; i < oldArray.length; i++) {
-            newArray[i] = oldArray[i];
+
+    /*  public static void arrayCopy(Worker[] oldArray, Worker newArray[]) {
+          for (int i = 0; i < oldArray.length; i++) {
+              newArray[i] = oldArray[i];
+          }
+      }*/
+    public static Worker findById(String id) {//в начале проверка на нал
+        for (int i = 0; i<workers.length;i++){
+            if (workers[i] != null && workers[i].getId()==id) {
+                return workers[i];
+            }
         }
+        return null;
     }
 
-
-/*public findById(String id){
-
-}
+    public static Worker[] findAll(){
+        int sizeArray=0;
+        for (int i=0;i<workers.length;i++){
+            if (workers[i]==null){
+                sizeArray++;
+            }
+        }
+        Worker newArray[]=new Worker[sizeArray];
+        //System.arraycopy()
+    }
+/*
 public void update(Student student) {
 
 
