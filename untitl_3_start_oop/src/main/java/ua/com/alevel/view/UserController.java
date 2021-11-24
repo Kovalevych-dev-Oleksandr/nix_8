@@ -102,7 +102,7 @@ import java.util.List;
         }
 
         private void findById(BufferedReader reader) {
-            System.out.println("UserController.findById");
+            System.out.println("WorkersController.findById");
             try {
                 System.out.println("Please, enter id");
                 String id = reader.readLine();

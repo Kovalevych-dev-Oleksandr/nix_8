@@ -3,9 +3,9 @@ package ua.com.alevel.entity;
 public class Worker {
     private String id;
     private String firstName;
-    private int lastName;
+    private String lastName;
 
-    public String getId() {
+    public final String getId() {
         return this.id;
     }
 
@@ -21,19 +21,19 @@ public class Worker {
         this.firstName = firstName;
     }
 
-    public int getLastName() {
+    public String getLastName() {
         return this.lastName;
     }
 
-    public void setLastName(final int lastName) {
+    public void setLastName(final String lastName) {
         this.lastName = lastName;
     }
 
     @Override
     public String toString() {
-        return "Workers{" +
+        return "Worker{" +
                 "id='" + id + '\'' +
-                ",First Name='" + firstName  + '\'' +
+                ",First Name='" + firstName + '\'' +
                 ", Last Name'" + lastName + '\'' +
                 '}';
     }
