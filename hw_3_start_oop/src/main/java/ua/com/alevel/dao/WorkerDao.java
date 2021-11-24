@@ -3,8 +3,6 @@ package ua.com.alevel.dao;
 import ua.com.alevel.db.WorkerDB;
 import ua.com.alevel.entity.Worker;
 
-import static ua.com.alevel.db.WorkerDB.generateId;
-
 public class WorkerDao {
     private static final WorkerDB db = new WorkerDB();
 
@@ -17,7 +15,7 @@ public class WorkerDao {
         return db.findById(id);
     }
 
-    public  Worker[] findAll() {
+    public Worker[] findAll() {
         return db.findAll();
     }
 

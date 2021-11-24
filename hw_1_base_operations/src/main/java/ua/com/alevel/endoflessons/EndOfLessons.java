@@ -11,8 +11,8 @@ public class EndOfLessons implements EventProcessor {
     public void process(Reader reader, PrintStream writer) {
         final int b=60;
         writer.println("Enter a character 1-10");
-        final Scanner intger = new Scanner(System.in);
-        int a = intger.nextInt();
+        final Scanner integers = new Scanner(System.in);
+        int a = integers.nextInt();
         a = EndOfLessons.getAnInt(a);
         writer.print(a / b + 9);
         writer.print(":");

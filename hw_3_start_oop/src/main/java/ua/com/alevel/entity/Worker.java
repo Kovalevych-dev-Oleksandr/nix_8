@@ -4,6 +4,15 @@ public class Worker {
     private String id;
     private String firstName;
     private String lastName;
+    private String patronymic;
+
+    public String getPatronymic() {
+        return this.patronymic;
+    }
+
+    public void setPatronymic(final String patronymic) {
+        this.patronymic = patronymic;
+    }
 
     public final String getId() {
         return this.id;
@@ -34,7 +43,8 @@ public class Worker {
         return "Worker{" +
                 "id='" + id + '\'' +
                 ",First Name='" + firstName + '\'' +
-                ", Last Name'" + lastName + '\'' +
+                ", Last Name' " + lastName + '\'' +
+                ", Patronymic='" + patronymic + '\'' +
                 '}';
     }
 }

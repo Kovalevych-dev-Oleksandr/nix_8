@@ -69,9 +69,12 @@ public class WorkerController {
             String name = reader.readLine();
             System.out.println("Please, enter your surname");
             String surname = reader.readLine();
+            System.out.println("Please, enter your Patronymic");
+            String patronymic = reader.readLine();
             Worker worker = new Worker();
             worker.setFirstName(name);
             worker.setLastName(surname);
+            worker.setPatronymic(patronymic);
             workerService.create(worker);
         } catch (IOException e) {
             System.out.println("problem: = " + e.getMessage());
@@ -87,10 +90,13 @@ public class WorkerController {
             String name = reader.readLine();
             System.out.println("Please, enter your surname");
             String surname = reader.readLine();
+            System.out.println("Please, enter your Patronymic");
+            String patronymic = reader.readLine();
             Worker worker = new Worker();
             worker.setId(id);
             worker.setLastName(surname);
             worker.setFirstName(name);
+            worker.setPatronymic(patronymic);
             workerService.update(worker);
         } catch (IOException e) {
             System.out.println("problem: = " + e.getMessage());
@@ -114,7 +120,11 @@ public class WorkerController {
             System.out.println("Please, enter id");
             String id = reader.readLine();
             Worker worker = workerService.findById(id);
-            System.out.println("worker = " + worker);
+            if (worker == null) {
+                System.out.println("worker = not found");
+            } else {
+                System.out.println("worker = " + worker);
+            }
         } catch (IOException e) {
             System.out.println("problem: = " + e.getMessage());
         }
@@ -124,11 +134,11 @@ public class WorkerController {
         System.out.println("WorkerController.findAll");
         Worker[] workers = workerService.findAll();
         if (workers != null && workers.length != 0) {
-            for (int i = 0; i < workers.length; i++){
+            for (int i = 0; i < workers.length; i++) {
                 System.out.println("worker = " + workers[i]);
             }
         } else {
-            System.out.println("users empty");
+            System.out.println("worker empty");
         }
     }
 }
