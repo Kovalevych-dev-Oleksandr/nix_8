@@ -4,14 +4,18 @@ import ua.com.alevel.db.WorkerDB;
 import ua.com.alevel.entity.Worker;
 
 public class WorkerDao {
-    private static final WorkerDB db = new WorkerDB();
+    private final WorkerDB db;
+
+    public WorkerDao(final WorkerDB db) {
+        this.db = db;
+    }
 
     public void create(Worker worker) {
 
         db.create(worker);
     }
 
-    public static Worker findById(String id) {
+    public Worker findById(String id) {
         return db.findById(id);
     }
 

@@ -3,13 +3,15 @@ package ua.com.alevel.service;
 import ua.com.alevel.dao.WorkerDao;
 import ua.com.alevel.entity.Worker;
 
-import static ua.com.alevel.db.WorkerDB.generateId;
-
 public class WorkerService {
-    private final WorkerDao workerDao = new WorkerDao();
+    private final WorkerDao workerDao;
+
+    public WorkerService(final WorkerDao workerDao) {
+        this.workerDao = workerDao;
+    }
+
 
     public void create(Worker worker) {
-        worker.setId(generateId());
         workerDao.create(worker);
     }
 
@@ -28,5 +30,6 @@ public class WorkerService {
     public void delete(String id) {
         workerDao.delete(id);
     }
+
 
 }

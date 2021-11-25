@@ -6,14 +6,15 @@ import java.util.Objects;
 import java.util.UUID;
 
 public class WorkerDB {
-    public static final int START_ARRAY_SIZE = 30;
-    private static final Worker[] workers = new Worker[WorkerDB.START_ARRAY_SIZE];
+    private static final int START_ARRAY_SIZE = 30;
+    private static Worker[] workers = new Worker[START_ARRAY_SIZE];
 
     public void create(final Worker worker) {
+        worker.setId(generateId());
         boolean dataRecordingCapability = false;
-        for (int i = 0; i < WorkerDB.workers.length; i++) {
-            if (WorkerDB.workers[i] == null) {
-                WorkerDB.workers[i] = worker;
+        for (int i = 0; i < workers.length; i++) {
+            if (workers[i] == null) {
+                workers[i] = worker;
                 dataRecordingCapability = true;
                 break;
             }
@@ -21,14 +22,18 @@ public class WorkerDB {
         if (dataRecordingCapability) {
             return;
         }
-        final Worker[] oldArray = WorkerDB.workers;
-        final Worker[] newArray = new Worker[oldArray.length + WorkerDB.START_ARRAY_SIZE];
-        System.arraycopy(oldArray, 0, WorkerDB.workers, 0, oldArray.length);
-        WorkerDB.workers[oldArray.length] = worker;
+        this.increasingArray(worker);
     }
 
-    public void update(final Worker worker) {
-        Worker current = findById(worker.getId());
+    private void increasingArray(Worker worker) {
+        final Worker[] newArray = new Worker[workers.length + START_ARRAY_SIZE];
+        System.arraycopy(workers, 0, newArray, 0, workers.length);
+        workers = newArray;
+        workers[workers.length] = worker;
+    }
+
+    public void update(final Worker worker) {//worker
+        Worker current = this.findById(worker.getId());
         if (current != null) {
             current.setFirstName(worker.getFirstName());
             current.setPatronymic(worker.getPatronymic());
@@ -36,9 +41,9 @@ public class WorkerDB {
         }
     }
 
-    public static Worker findById(final String id) {
+    public Worker findById(final String id) {
         int i;
-        for (i = 0; i < WorkerDB.workers.length; i++) {
+        for (i = 0; i < workers.length; i++) {
             if (workers[i] == null) {
                 break;
             }
@@ -49,49 +54,58 @@ public class WorkerDB {
         return null;
     }
 
-    public static Worker[] findAll() {
+    public Worker[] findAll() {
         int sizeResultArray = 0;
-        for (int i = 0; i < WorkerDB.workers.length; i++) {
-            if (WorkerDB.workers[i] == null) {
+        for (int i = 0; i < workers.length; i++) {
+            if (workers[i] == null) {
                 sizeResultArray = i;
                 break;
             }
         }
         final Worker[] newResultArray = new Worker[sizeResultArray];
-        System.arraycopy(WorkerDB.workers, 0, newResultArray, 0, sizeResultArray);
+        System.arraycopy(workers, 0, newResultArray, 0, sizeResultArray);
         return newResultArray;
     }
 
 
     public void delete(final String id) {
         int workerDeletePoint = 0;
-        for (int i = 0; i < WorkerDB.workers.length; i++) {
-            if (WorkerDB.workers[i] != null && id.equals(WorkerDB.workers[i].getId())) {
-                WorkerDB.workers[i] = null;
+        for (int i = 0; i < workers.length; i++) {
+            if (null != workers[i] && id.equals(workers[i].getId())) {
+                workers[i] = null;
                 workerDeletePoint = i;
                 break;
             }
         }
-        for (int i = workerDeletePoint; i < WorkerDB.workers.length; i++) {
-            if (WorkerDB.workers[i + 1] == null) {
-                break;
-            } else {
-                WorkerDB.workers[i] = WorkerDB.workers[i + 1];
-                WorkerDB.workers[i + 1] = null;
-            }
-        }
+        final Worker[] newArray = new Worker[workers.length];
+
+        System.arraycopy(workers, 0, newArray, 0, workerDeletePoint);
+        System.arraycopy(workers, workerDeletePoint + 1, newArray, workerDeletePoint, workers.length - (workerDeletePoint + 1));
+        workers = newArray;
 
     }
 
-    public static String generateId() {
-        final String id = UUID.randomUUID().toString();
-        for (int i = 0; i < WorkerDB.workers.length; i++) {
-            if (WorkerDB.workers[i] == null) break;
-            if (id.equals(WorkerDB.workers[i].getId())) {
-                return WorkerDB.generateId();
+
+    private String generateId() {
+        String id;
+        do {
+            id = this.generateStringUUID();
+        } while (this.existId(id));
+        return id;
+    }
+
+    private boolean existId(final String id) {
+        for (final Worker worker : workers) {
+            if (null == worker) break;
+            if (id.equals(worker.getId())) {
+                return true;
             }
         }
-        return id;
+        return false;
+    }
+
+    private String generateStringUUID() {
+        return UUID.randomUUID().toString();
     }
 
 }
