@@ -10,3 +10,7 @@ hw_2 = 7
 module_1 = 8
 
 вижу ... вот вижу старания)
+
+hw_3 = 8
+а почему здесь не final?))
+ua/com/alevel/db/WorkerDB.java:29

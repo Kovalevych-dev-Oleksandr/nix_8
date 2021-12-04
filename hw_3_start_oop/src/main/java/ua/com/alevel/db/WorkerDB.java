@@ -6,6 +6,7 @@ import java.util.Objects;
 import java.util.UUID;
 
 public class WorkerDB {
+
     private static final int START_ARRAY_SIZE = 30;
     private static Worker[] workers = new Worker[START_ARRAY_SIZE];
 
@@ -67,7 +68,6 @@ public class WorkerDB {
         return newResultArray;
     }
 
-
     public void delete(final String id) {
         int workerDeletePoint = 0;
         for (int i = 0; i < workers.length; i++) {
@@ -107,5 +107,4 @@ public class WorkerDB {
     private String generateStringUUID() {
         return UUID.randomUUID().toString();
     }
-
 }

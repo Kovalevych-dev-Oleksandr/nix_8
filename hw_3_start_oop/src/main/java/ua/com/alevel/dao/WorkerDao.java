@@ -4,6 +4,7 @@ import ua.com.alevel.db.WorkerDB;
 import ua.com.alevel.entity.Worker;
 
 public class WorkerDao {
+
     private final WorkerDB db;
 
     public WorkerDao(final WorkerDB db) {
@@ -11,7 +12,6 @@ public class WorkerDao {
     }
 
     public void create(Worker worker) {
-
         db.create(worker);
     }
 
@@ -30,6 +30,4 @@ public class WorkerDao {
     public void delete(String id) {
         db.delete(id);
     }
-
-
 }

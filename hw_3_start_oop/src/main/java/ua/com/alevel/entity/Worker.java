@@ -1,6 +1,7 @@
 package ua.com.alevel.entity;
 
 public class Worker {
+
     private String id;
     private String firstName;
     private String lastName;
