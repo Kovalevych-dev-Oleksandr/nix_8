@@ -1,29 +1,21 @@
 package ua.com.alevel;
 
+import ua.com.alevel.list_of_dates.ListOfDates;
+
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.Scanner;
 
 public class ModuleMainTwo {
-    public static void main(String[] args) {
-    ModuleMainTwo mainTwo=new ModuleMainTwo();
-    mainTwo.readResources();
-    }
-
-    public void readResources() {
-        File file = new File(
-                getClass().getClassLoader().getResource("text.txt").getFile()
-        );
-
-        try {
-            Scanner sc =  new Scanner(file);
-            while (sc.hasNextLine())
-                System.out.println(sc.nextLine());
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-
+    public static void main(String[] args) throws IOException {
+        //ListOfDates dates = new ListOfDates();
+         ListOfDates.run();
 
     }
+
+
+
 }
 
