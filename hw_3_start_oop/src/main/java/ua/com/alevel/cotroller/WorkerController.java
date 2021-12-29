@@ -18,6 +18,7 @@ public class WorkerController {
     public void create(Worker worker) {
         workerService.create(worker);
     }
+
     public Worker findById(String id) {
         return workerService.findById(id);
     }
@@ -34,4 +35,3 @@ public class WorkerController {
         workerService.delete(id);
     }
 }
-

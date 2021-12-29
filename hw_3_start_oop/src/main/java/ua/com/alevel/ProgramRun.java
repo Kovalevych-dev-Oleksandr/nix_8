@@ -12,7 +12,6 @@ import java.io.InputStreamReader;
 
 public class ProgramRun {
 
-
     public void run() {
         WorkerController controller = new WorkerController(new WorkerService(new WorkerDao(new WorkerDB())));
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
@@ -81,11 +80,9 @@ public class ProgramRun {
         }
     }
 
-
     private void update(BufferedReader reader, WorkerController controller) {
         System.out.println("WorkerController.update");
         try {
-
             String id = getString(reader, "Please, enter id");
             String name = getString(reader, "Please, enter your Name:");
             String surname = getString(reader, "Please, enter your Surname:");
@@ -142,5 +139,4 @@ public class ProgramRun {
         System.out.println(messageLine);
         return reader.readLine();
     }
-
 }
