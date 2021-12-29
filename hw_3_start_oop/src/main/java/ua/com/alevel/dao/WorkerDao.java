@@ -5,7 +5,6 @@ import ua.com.alevel.entity.Worker;
 
 public class WorkerDao {
     private final WorkerDB db;
-
     public WorkerDao(final WorkerDB db) {
         this.db = db;
     }

@@ -5,11 +5,9 @@ import ua.com.alevel.entity.Worker;
 
 public class WorkerService {
     private final WorkerDao workerDao;
-
     public WorkerService(final WorkerDao workerDao) {
         this.workerDao = workerDao;
     }
-
 
     public void create(Worker worker) {
         workerDao.create(worker);
