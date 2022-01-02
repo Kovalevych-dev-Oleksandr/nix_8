@@ -2,42 +2,45 @@ package ua.com.alevel.list_of_dates;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.regex.Pattern;
 
-import static ua.com.alevel.utils.Utils.readFile;
-import static ua.com.alevel.utils.Utils.writeInFile;
+import static ua.com.alevel.utils.MyUtils.readFileLine;
+import static ua.com.alevel.utils.MyUtils.writeInFile;
 
 public final class ListOfDates {
+
+    private static final Pattern PATTERN_ONE = Pattern.compile("(?i).*[a-zа-я].*");
     private static final String READ_FILE_NAME = "input_list_of_dates.txt";
     private static final String WRITE_FILE_NAME = "output_list_of_dates.txt";
-    private static final int LENGTH_OF_THE_ENTRY_IN_THE_LINE = 1;
+    private static final int STRING_LENGTH = 12;
     private static final int SIZE_YEAR = 4;
     private static final int COUNT_MONTH = 12;
     private static final int DAY_IN_MONTH = 31;
+    private static final Pattern PATTERN = Pattern.compile("[a-zA-Zа-яА-Я]+");
 
+    private ListOfDates() {
+    }
 
-    public static List<String> run() throws IOException {
-        List<String> arrayList = (readFile(ListOfDates.READ_FILE_NAME));
+    public static void run() throws IOException {
+        List<String> arrayList = (readFileLine(ListOfDates.READ_FILE_NAME));
         String bufferLine;
         for (int i = 0; i < arrayList.size(); i++) {
             bufferLine = arrayList.get(i);
-            if (bufferLine.isBlank() && ListOfDates.LENGTH_OF_THE_ENTRY_IN_THE_LINE < bufferLine.length()) {
+            if (bufferLine.isBlank() || ListOfDates.STRING_LENGTH < bufferLine.length()) {
                 arrayList.remove(i);
-                continue;
+                i--;
             } else {
-                bufferLine = stringTransformation(bufferLine);
+                bufferLine = ListOfDates.stringTransformation(bufferLine);
                 arrayList.set(i, bufferLine);
             }
 
         }
-        writeInFile(WRITE_FILE_NAME, arrayList);
-        return arrayList;
-
+        writeInFile(ListOfDates.WRITE_FILE_NAME, arrayList);
     }
 
     private static String removeCharAt(String line) {
         StringBuilder clearLine = new StringBuilder();
         clearLine.append(line);
-        System.out.println(line);
         clearLine.deleteCharAt(0);
         clearLine.deleteCharAt(clearLine.length() - 1);
         return clearLine.toString();
@@ -45,15 +48,14 @@ public final class ListOfDates {
 
     private static String stringTransformation(String line) {
         StringBuilder result = new StringBuilder();
-        String userExceptionsOne = "-> Incorrect input format in this date. Example type “2020/04/05”or{2020/04/0}or|2020/04/05| or{2020/04/0}or[2020/04/05] or '2020/04/05'";
-        String userExceptionsTwo = "->  Day or month more possible values";
+        final String userExceptionsOne = "-> Incorrect input format in this date or incorrect day or month. Example type: {2020/04/01}";
         try {
             String[] array;
-            array = removeCharAt(line).split("/");
+            array = ListOfDates.removeCharAt(line).split("/");
             int elementOfArrayYear = 0;
             int elementOfArrayMonth = 0;
             for (int i = 0; i < array.length; i++) {
-                if (array[i].length() == SIZE_YEAR) {
+                if (ListOfDates.SIZE_YEAR == array[i].length()) {
                     elementOfArrayYear = i;
                 }
                 if (ListOfDates.SIZE_YEAR > array[i].length() && ListOfDates.COUNT_MONTH >= Integer.parseInt(array[i])) {
@@ -62,16 +64,16 @@ public final class ListOfDates {
 
             }
             int elementOfArrayDay = array.length - (elementOfArrayMonth + elementOfArrayYear);
-            if (ListOfDates.DAY_IN_MONTH >= Integer.parseInt(array[elementOfArrayDay]) && COUNT_MONTH >= Integer.parseInt(array[elementOfArrayMonth])) {
+
+            if (ListOfDates.DAY_IN_MONTH >= Integer.parseInt(array[elementOfArrayDay]) && ListOfDates.COUNT_MONTH >= Integer.parseInt(array[elementOfArrayMonth])) {
                 for (int i : new int[]{elementOfArrayYear, elementOfArrayMonth, elementOfArrayDay}) {
                     result.append(array[i]);
                 }
-            } else if (result.toString().matches("(?i).*[a-zа-я].*") || result.toString().matches("[a-zA-Zа-яА-Я]+")) {
-                resultUserException(line, result, userExceptionsOne);
-
-            } else {
-                resultUserException(line, result, userExceptionsTwo);
             }
+            if (result.toString().isBlank() || ListOfDates.PATTERN_ONE.matcher(result.toString()).matches() || ListOfDates.PATTERN.matcher(result.toString()).matches()) {
+                resultUserException(line, result, userExceptionsOne);
+            }
+
 
         } catch (Exception exception) {
             resultUserException(line, result, userExceptionsOne);
