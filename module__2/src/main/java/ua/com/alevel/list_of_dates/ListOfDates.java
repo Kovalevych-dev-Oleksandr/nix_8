@@ -9,7 +9,7 @@ import static ua.com.alevel.utils.MyUtils.writeInFile;
 
 public final class ListOfDates {
 
-    private static final Pattern PATTERN_ONE = Pattern.compile("(?i).*[a-zа-я].*");
+    public static final Pattern PATTERN_ONE = Pattern.compile("(?i).*[a-zа-я].*");
     private static final String READ_FILE_NAME = "input_list_of_dates.txt";
     private static final String WRITE_FILE_NAME = "output_list_of_dates.txt";
     private static final int STRING_LENGTH = 12;
@@ -17,6 +17,8 @@ public final class ListOfDates {
     private static final int COUNT_MONTH = 12;
     private static final int DAY_IN_MONTH = 31;
     private static final Pattern PATTERN = Pattern.compile("[a-zA-Zа-яА-Я]+");
+    private static final String USER_EXCEPTIONS_ONE = "->Enter from the beginning of the line without spaces. Incorrect input format in this date or incorrect day or month. Example type: {2020/04/01}";
+
 
     private ListOfDates() {
     }
@@ -27,8 +29,7 @@ public final class ListOfDates {
         for (int i = 0; i < arrayList.size(); i++) {
             bufferLine = arrayList.get(i);
             if (bufferLine.isBlank() || ListOfDates.STRING_LENGTH < bufferLine.length()) {
-                arrayList.remove(i);
-                i--;
+                arrayList.set(i, ListOfDates.USER_EXCEPTIONS_ONE);
             } else {
                 bufferLine = ListOfDates.stringTransformation(bufferLine);
                 arrayList.set(i, bufferLine);
@@ -48,7 +49,6 @@ public final class ListOfDates {
 
     private static String stringTransformation(String line) {
         StringBuilder result = new StringBuilder();
-        final String userExceptionsOne = "-> Incorrect input format in this date or incorrect day or month. Example type: {2020/04/01}";
         try {
             String[] array;
             array = ListOfDates.removeCharAt(line).split("/");
@@ -71,12 +71,12 @@ public final class ListOfDates {
                 }
             }
             if (result.toString().isBlank() || ListOfDates.PATTERN_ONE.matcher(result.toString()).matches() || ListOfDates.PATTERN.matcher(result.toString()).matches()) {
-                resultUserException(line, result, userExceptionsOne);
+                resultUserException(line, result, USER_EXCEPTIONS_ONE);
             }
 
 
         } catch (Exception exception) {
-            resultUserException(line, result, userExceptionsOne);
+            resultUserException(line, result, USER_EXCEPTIONS_ONE);
         }
         return result.toString();
 
