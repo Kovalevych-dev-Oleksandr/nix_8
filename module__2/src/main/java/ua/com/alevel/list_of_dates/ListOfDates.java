@@ -19,9 +19,7 @@ public final class ListOfDates {
     private static final Pattern PATTERN = Pattern.compile("[a-zA-Zа-яА-Я]+");
     private static final String USER_EXCEPTIONS_ONE = "->Enter from the beginning of the line without spaces. Incorrect input format in this date or incorrect day or month. Example type: {2020/04/01}";
 
-
-    private ListOfDates() {
-    }
+    private ListOfDates() { }
 
     public static void run() throws IOException {
         List<String> arrayList = (readFileLine(ListOfDates.READ_FILE_NAME));
@@ -34,7 +32,6 @@ public final class ListOfDates {
                 bufferLine = ListOfDates.stringTransformation(bufferLine);
                 arrayList.set(i, bufferLine);
             }
-
         }
         writeInFile(ListOfDates.WRITE_FILE_NAME, arrayList);
     }
@@ -61,7 +58,6 @@ public final class ListOfDates {
                 if (ListOfDates.SIZE_YEAR > array[i].length() && ListOfDates.COUNT_MONTH >= Integer.parseInt(array[i])) {
                     elementOfArrayMonth = i;
                 }
-
             }
             int elementOfArrayDay = array.length - (elementOfArrayMonth + elementOfArrayYear);
 
@@ -74,12 +70,10 @@ public final class ListOfDates {
                 resultUserException(line, result, USER_EXCEPTIONS_ONE);
             }
 
-
         } catch (Exception exception) {
             resultUserException(line, result, USER_EXCEPTIONS_ONE);
         }
         return result.toString();
-
     }
 
     private static void resultUserException(String line, StringBuilder result, String userExceptions) {

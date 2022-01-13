@@ -7,6 +7,7 @@ import ua.com.alevel.road_cost.RoadCost;
 import java.io.IOException;
 
 public class ProgramRun {
+
     public static void run() {
         try {
             ListOfDates.run();
@@ -15,6 +16,5 @@ public class ProgramRun {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 }

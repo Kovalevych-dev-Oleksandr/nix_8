@@ -6,10 +6,10 @@ import java.util.Arrays;
 import java.util.List;
 
 public final class MyUtils {
+
     public static final String FILE_NOT_FOUND = " not found";
 
-    private MyUtils() {
-    }
+    private MyUtils() { }
 
     public static List<String> readFileLine(String fileName) throws IOException {
         List<String> arrayList = new ArrayList<>();
@@ -38,7 +38,6 @@ public final class MyUtils {
                 stringBuilder.append(" ");
                 stringBuilder.append(arrayList.get(i));
             }
-
         }
         String[] stringArray;
         stringArray = stringBuilder.toString().split(" ");
