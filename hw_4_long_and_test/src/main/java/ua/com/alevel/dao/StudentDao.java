@@ -1,42 +1,32 @@
 package ua.com.alevel.dao;
 
-import ua.com.alevel.db.CourseDB;
 import ua.com.alevel.db.StudentDB;
-import ua.com.alevel.entity.Course;
 import ua.com.alevel.entity.Student;
 
 public class StudentDao {
-    private static StudentDB STUDENT_DB = StudentDB.getInstance();
-    private static CourseDB COURSE_DB = CourseDB.getInstance();
+    private final StudentDB db;
 
-    public StudentDao() {}
+    public StudentDao() {
+        this.db = StudentDB.getInstance();
+    }
 
-    public String create(Student student, Course[] courses) {
-        Course[] bufferArray=new Course[courses.length];
-        int breakPoint=0;
-        for(int i=0;i< courses.length;i++){
-            if (null != StudentDao.COURSE_DB.findById(courses[i].getId())){
-                bufferArray[breakPoint]=courses[i];
-                breakPoint++;
-            }
-        }
-        student.setCourses(bufferArray);
-       return STUDENT_DB.create(student);
+    public String create(Student student) {
+        return db.create(student);
     }
 
     public Student findById(String id) {
-        return STUDENT_DB.findById(id);
+        return db.findById(id);
     }
 
     public Student[] findAll() {
-        return STUDENT_DB.findAll();
+        return db.findAll();
     }
 
-    public void update(Student student) {
-        STUDENT_DB.update(student);
+    public String update(Student student) {
+        return db.update(student);
     }
 
-    public void delete(String id) {
-        STUDENT_DB.delete(id);
+    public String delete(String id) {
+        return db.delete(id);
     }
 }

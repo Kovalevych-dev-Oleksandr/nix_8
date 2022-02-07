@@ -19,6 +19,14 @@
         <maven.jar.plugin.version>3.2.0</maven.jar.plugin.version>
     </properties>
 
+    <dependencies>
+        <dependency>
+            <groupId>xalan</groupId>
+            <artifactId>xalan</artifactId>
+            <version>2.7.1</version>
+        </dependency>
+    </dependencies>
+
     <build>
         <finalName>hw_4_long_and_test</finalName>
         <plugins>

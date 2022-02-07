@@ -1,7 +1,6 @@
 package ua.com.alevel.entity;
 
-public class Student {
-    private String id;
+public class Student extends BaseEntity {
     private String name;
     private String surname;
     private Course[] courses;
@@ -30,17 +29,12 @@ public class Student {
         this.name = name;
     }
 
-    public String getId() { return this.id; }
-
-    public void setId(String id) { this.id = id;  }
-
     @Override
     public String toString() {
         return "Student{" +
-                "Id='" + getId() + +'\'' +
-                ",name='" + name + '\'' +
+                "Id='" + super.getId()+ +'\'' +
+                "',name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
-
                 '}';
     }
 }

@@ -1,6 +1,5 @@
 package ua.com.alevel.db;
 
-import ua.com.alevel.entity.Course;
 import ua.com.alevel.entity.Student;
 
 import java.util.Objects;
@@ -18,60 +17,56 @@ public class StudentDB {
         return instance;
     }
 
-    public String create(Student student) {
-        String result;
-        Course[] array=student.getCourses();
-        if(null == array[0]){
-        result="A student does not exist without a course";
-        }else {
-            student.setId(generateId());
-            boolean dataRecordingCapability = false;
-            for (int i = 0; i < students.length; i++) {
-                if (null == students[i]) {
-                    students[i] = student;
-                    dataRecordingCapability = true;
-                    break;
-                }
+    public String create(final Student student) {
+        student.setId(this.generateId());
+        boolean dataRecordingCapability = false;
+        for (int i = 0; i < students.length; i++) {
+            if (students[i] == null) {
+                students[i] = student;
+                dataRecordingCapability = true;
+                break;
             }
-            if (!dataRecordingCapability) {
-                this.increasingArray(student);
-            }
-            result="The data is recorded in the database";
         }
-        return result;
+        if (!dataRecordingCapability) {
+            this.increasingArray(student);
+        }
+        return "Student create";
     }
 
-    public static void clear() {
-        students = new Student[START_ARRAY_SIZE];
-    }
 
-    private void increasingArray(Student student) {
+    private void increasingArray(Student studentUITM) {
         final Student[] newArray = new Student[students.length + START_ARRAY_SIZE];
         System.arraycopy(students, 0, newArray, 0, students.length);
         students = newArray;
-        students[students.length] = student;
+        students[students.length] = studentUITM;
     }
 
-    public void update(Student student) {//student
+
+    public String update(Student student) {
         Student current = this.findById(student.getId());
         if (current != null) {
-            current.setCourses(student.getCourses());
-            current.setSurname(student.getSurname());
             current.setName(student.getName());
+            current.setSurname(student.getSurname());
+            current.setCourses(student.getCourses());
+            return "Student was update";
+        } else {
+            return "we dont have student with this id";
         }
     }
 
+
     public Student findById(final String id) {
-        int i;
-        for (i = 0; i < students.length; i++) {
-            if (students[i] == null) {
-                break;
+            int i;
+            for (i = 0; i < StudentDB.students.length; i++) {
+                if(StudentDB.students[i]==null){
+                    break;
+                }
+                if (Objects.equals(StudentDB.students[i].getId(), id)) {
+                    return StudentDB.students[i];
+                }
             }
-            if (Objects.equals(students[i].getId(), id)) {
-                return students[i];
-            }
-        }
-        return null;
+            return null;
+
     }
 
     public Student[] findAll() {
@@ -82,27 +77,33 @@ public class StudentDB {
                 break;
             }
         }
-        Student[] newResultArray = new Student[sizeResultArray];
+        final Student[] newResultArray = new Student[sizeResultArray];
         System.arraycopy(students, 0, newResultArray, 0, sizeResultArray);
         return newResultArray;
     }
 
-    public void delete(final String id) {
-        int workerDeletePoint = 0;
+
+    public String delete(String id) {
+        int studentDeletePoint = 0;
+        boolean studentExist = false;
         for (int i = 0; i < students.length; i++) {
             if (null != students[i] && id.equals(students[i].getId())) {
                 students[i] = null;
-                workerDeletePoint = i;
-                break;
+                studentDeletePoint = i;
+                studentExist = true;
             }
         }
-        Student[] newArray = new Student[students.length];
+        if (studentExist) {
+            final Student[] newArray = new Student[students.length];
+            System.arraycopy(students, 0, newArray, 0, studentDeletePoint);
+            System.arraycopy(students, studentDeletePoint + 1, newArray, studentDeletePoint, students.length - (studentDeletePoint + 1));
+            students = newArray;
+            return "Student was delete";
 
-        System.arraycopy(students, 0, newArray, 0, workerDeletePoint);
-        System.arraycopy(students, workerDeletePoint + 1, newArray, workerDeletePoint, students.length - (workerDeletePoint + 1));
-        students = newArray;
-
+        }
+        return "we dont have student with this id";
     }
+
 
     private String generateId() {
         String id;

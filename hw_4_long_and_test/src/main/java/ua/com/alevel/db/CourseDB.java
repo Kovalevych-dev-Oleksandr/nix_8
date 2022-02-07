@@ -11,13 +11,13 @@ public class CourseDB {
     private static final int START_ARRAY_SIZE = 30;
     private static Course[] courses = new Course[START_ARRAY_SIZE];
 
-    private CourseDB() {}
+    public CourseDB() {}
 
     public static CourseDB getInstance() {
         return instance;
     }
 
-    public void create(Course course) {
+    public String create(Course course) {
         course.setId(generateId());
         boolean dataRecordingCapability = false;
         for (int i = 0; i < courses.length; i++) {
@@ -27,10 +27,10 @@ public class CourseDB {
                 break;
             }
         }
-        if (dataRecordingCapability) {
-            return;
+        if (!dataRecordingCapability) {
+            this.increasingArray(course);
         }
-        this.increasingArray(course);
+       return "Student was create";
     }
 
     public void clear() {
@@ -114,6 +114,6 @@ public class CourseDB {
     }
 
     private String generateStringUUID() {
-        return UUID.randomUUID().toString();
+        return String.copyValueOf(UUID.randomUUID().toString().toCharArray(),0,4);
     }
 }
