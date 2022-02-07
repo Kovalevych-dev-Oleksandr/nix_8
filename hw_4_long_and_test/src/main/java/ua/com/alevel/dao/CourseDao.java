@@ -1,9 +1,7 @@
 package ua.com.alevel.dao;
 
 import ua.com.alevel.db.CourseDB;
-import ua.com.alevel.db.StudentDB;
 import ua.com.alevel.entity.Course;
-import ua.com.alevel.entity.Student;
 
 public class CourseDao {
     private final CourseDB db;
@@ -24,11 +22,11 @@ public class CourseDao {
         return db.findAll();
     }
 
-    public void update(Course course) {
-        db.update(course);
+    public String update(Course course) {
+        return db.update(course);
     }
 
-    public void delete(String id) {
-        db.delete(id);
+    public String delete(String id) {
+        return db.delete(id);
     }
 }

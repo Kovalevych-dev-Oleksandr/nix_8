@@ -1,14 +1,17 @@
 package ua.com.alevel;
 
+import ua.com.alevel.controller.CourseController;
 import ua.com.alevel.controller.StudentController;
+import ua.com.alevel.dao.CourseDao;
 import ua.com.alevel.dao.StudentDao;
+import ua.com.alevel.entity.Course;
 import ua.com.alevel.entity.Student;
+import ua.com.alevel.service.CourseService;
 import ua.com.alevel.service.StudentService;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-
 
 import static org.apache.xalan.xsltc.compiler.util.Util.println;
 
@@ -22,19 +25,20 @@ public class ProgramRun {
     }*/
 
     public void run() {
-        StudentController controller = new StudentController(new StudentService(new StudentDao()));
+        StudentController studentController = new StudentController(new StudentService(new StudentDao()));
+        CourseController courseController = new CourseController(new CourseService(new CourseDao()));
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         println("select your option");
         String position;
         try {
             this.runNavigation();
             while (null != (position = reader.readLine())) {
-                this.crud(position, reader, controller);
+                this.crud(position, reader, studentController, courseController);
                 position = reader.readLine();
                 if (position.equals("0")) {
                     System.exit(0);
                 }
-                this.crud(position, reader, controller);
+                this.crud(position, reader, studentController, courseController);
             }
         } catch (IOException e) {
             println("problem: = " + e.getMessage());
@@ -48,30 +52,101 @@ public class ProgramRun {
         println("if you want delete Student, please enter 3");
         println("if you want findById Student, please enter 4");
         println("if you want findAll Student, please enter 5");
+        println("if you want create Course, please enter 6");
+        println("if you want update Course, please enter 7");
+        println("if you want delete Course, please enter 8");
+        println("if you want findById Course, please enter 9");
+        println("if you want findAll Course, please enter 10");
+        println("if you want add Student to Course, please enter 11");
         println("if you want exit, please enter 0");
         println("");
     }
 
-    private void crud(String position, BufferedReader reader, StudentController controller) {
+    private void crud(String position, BufferedReader reader, StudentController studentController, CourseController courseController) {
         switch (position) {
 
             case "1":
-                createStudent(reader, controller);
+                this.createStudent(reader, studentController);
                 break;
             case "2":
-                updateStudent(reader, controller);
+                this.updateStudent(reader, studentController);
                 break;
             case "3":
-                deleteStudent(reader, controller);
+                this.deleteStudent(reader, studentController);
                 break;
             case "4":
-                findByIdStudent(reader, controller);
+                this.findByIdStudent(reader, studentController);
                 break;
             case "5":
-                findAllStudent(reader, controller);
+                this.findAllStudent(reader, studentController);
+                break;
+            case "6":
+                this.createCourse(reader, courseController);
+                break;
+            case "7":
+                this.updateCourse(reader, courseController);
+                break;
+            case "8":
+                this.deleteCourse(reader, courseController);
+                break;
+            case "9":
+                this.findByIdCourse(reader, courseController);
+                break;
+            case "10":
+                this.findAllCourse(reader, courseController);
+                break;
+            case "11":
+                this.addStudentToCourse(reader, courseController, studentController);
                 break;
         }
         this.runNavigation();
+    }
+
+    private void addStudentToCourse(BufferedReader reader, CourseController courseController, StudentController studentController) {
+
+      /*  private void increasingArray(Student studentUITM) {
+            Student[] newArray = new Student[students.length + START_ARRAY_SIZE];
+            System.arraycopy(students, 0, newArray, 0, students.length);
+            students = newArray;
+            students[students.length] = studentUITM;
+        }*/
+
+        try {
+            Student student = studentController.findById(getString(reader, "Enter student id"));
+            Course course = courseController.findById(getString(reader, "Enter course id"));
+            Course[] courseArray = student.getCourses();
+            Student[] studentArray = course.getStudents();
+
+            if (null == courseArray) {
+                student.setCourses(new Course[]{course});
+            } else {
+                for (int i = 0; i < courseArray.length; i++) {
+                    if (courseArray[i].getId().equals(course.getId())) {
+                        println("We already have this course and student");
+                        return;
+                    }
+                }
+                Course[] newArray = new Course[(courseArray.length + 1)];
+                System.arraycopy(courseArray, 0, newArray, 0, courseArray.length);
+                newArray[courseArray.length - 1] = course;
+                courseArray = newArray;
+                student.setCourses(courseArray);
+
+                if (null == studentArray) {
+                    course.setStudents(new Student[]{student});
+                } else {
+                    Student[] newArrayStudent = new Student[(studentArray.length + 1)];
+                    System.arraycopy(studentArray, 0, newArrayStudent, 0, studentArray.length);
+                    newArrayStudent[studentArray.length - 1] = student;
+                    studentArray = newArrayStudent;
+                    course.setStudents(studentArray);
+                }
+            }
+            studentController.update(student);
+            courseController.update(course);
+        } catch (Exception e) {
+            println("ERROR");
+        }
     }
 
     private void createStudent(BufferedReader reader, StudentController controller) {
@@ -81,6 +156,17 @@ public class ProgramRun {
             student.setName(getString(reader, "Please, enter  Name:"));
             student.setSurname(getString(reader, "Please, enter  Surname:"));
             println(controller.create(student));
+        } catch (IOException e) {
+            println("problem: = " + e.getMessage());
+        }
+    }
+
+    private void createCourse(BufferedReader reader, CourseController controller) {
+        println("CourseController.create");
+        try {
+            Course course = new Course();
+            course.setCourseName(getString(reader, "Please, enter  Course Name:"));
+            println(controller.create(course));
         } catch (IOException e) {
             println("problem: = " + e.getMessage());
         }
@@ -99,7 +185,27 @@ public class ProgramRun {
         }
     }
 
+    private void updateCourse(BufferedReader reader, CourseController controller) {
+        println("CourseController.update");
+        try {
+            Course course = new Course();
+            course.setId(getString(reader, "Please, enter id"));
+            course.setCourseName(getString(reader, "Please, enter  Course Name:"));
+            println(controller.update(course));
+        } catch (IOException e) {
+            println("problem: = " + e.getMessage());
+        }
+    }
+
     private void deleteStudent(BufferedReader reader, StudentController controller) {
+        try {
+            println(controller.delete(getString(reader, "Please, enter id")));
+        } catch (IOException e) {
+            println("problem: = " + e.getMessage());
+        }
+    }
+
+    private void deleteCourse(BufferedReader reader, CourseController controller) {
         try {
             println(controller.delete(getString(reader, "Please, enter id")));
         } catch (IOException e) {
@@ -121,6 +227,21 @@ public class ProgramRun {
         }
     }
 
+    private void findByIdCourse(BufferedReader reader, CourseController controller) {
+        println("CourseController.findById");
+        try {
+            Course course = controller.findById(getString(reader, "Please, enter id"));
+            if (null == course) {
+                println("course = not found");
+            } else {
+                println("course = " + course);
+            }
+        } catch (IOException e) {
+            println("problem: = " + e.getMessage());
+        }
+    }
+
+
     private void findAllStudent(BufferedReader reader, StudentController controller) {
         println("StudentController.findAll");
         Student[] students = controller.findAll();
@@ -130,6 +251,18 @@ public class ProgramRun {
             }
         } else {
             println("student empty");
+        }
+    }
+
+    private void findAllCourse(BufferedReader reader, CourseController controller) {
+        println("CourseController.findAll");
+        Course[] courses = controller.findAll();
+        if (null != courses && 0 != courses.length) {
+            for (Course course : courses) {
+                println("course = " + course.toString());
+            }
+        } else {
+            println("course empty");
         }
     }
 

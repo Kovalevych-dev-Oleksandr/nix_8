@@ -1,5 +1,7 @@
 package ua.com.alevel.entity;
 
+import java.util.Arrays;
+
 public class Student extends BaseEntity {
     private String name;
     private String surname;
@@ -32,9 +34,21 @@ public class Student extends BaseEntity {
     @Override
     public String toString() {
         return "Student{" +
-                "Id='" + super.getId()+ +'\'' +
-                "',name='" + name + '\'' +
+                "id='" + getId() + '\'' +
+                ", name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
+                ", Courses( " + courseArrayToString()+
                 '}';
+    }
+
+    private String courseArrayToString() {
+        String res = null;
+        if (courses==null){
+            return null;
+        }
+        for(int i=0;i<courses.length;i++){
+            res=res+"Name="+courses[i].getCourseName()+"; ";
+        }
+        return res;
     }
 }

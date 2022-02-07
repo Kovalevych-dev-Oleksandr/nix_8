@@ -18,9 +18,13 @@ public class StudentService {
         return studentDao.findById(id);
     }
 
-    public Student[] findAll() {return studentDao.findAll();}
+    public Student[] findAll() {
+        return studentDao.findAll();
+    }
 
-    public String update(Student student) {return studentDao.update(student); }
+    public String update(Student student) {
+        return studentDao.update(student);
+    }
 
     public String  delete(String id) {
         return studentDao.delete(id);
