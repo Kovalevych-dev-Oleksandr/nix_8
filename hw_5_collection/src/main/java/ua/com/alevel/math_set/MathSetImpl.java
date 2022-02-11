@@ -40,7 +40,6 @@ public class MathSetImpl<E extends Number & Comparable> implements MathSet<E> {
         }
     }
 
-
     public MathSetImpl(MathSet<E> mathSet) {
         Number[] array = mathSet.toArray();
         INIT_CAPACITY = array.length;
@@ -73,12 +72,10 @@ public class MathSetImpl<E extends Number & Comparable> implements MathSet<E> {
 
     @Override
     public void add(Number... n) {
-        for (int i = 0, nLength = n.length; i < nLength; i++) {
-            Number e = n[i];
+        for (Number e : n) {
             add(e);
         }
     }
-
 
     @Override
     public void join(MathSet<E> ms) {
@@ -202,7 +199,6 @@ public class MathSetImpl<E extends Number & Comparable> implements MathSet<E> {
         sortAsc();
         Number median;
         if (size % 2 == 0)
-
             median = (((E) objArray[size / 2]).doubleValue() + ((E) objArray[size / 2 - 1]).doubleValue()) / 2;
         else
             median = (Number) objArray[size / 2];
@@ -264,7 +260,6 @@ public class MathSetImpl<E extends Number & Comparable> implements MathSet<E> {
         return false;
     }
 
-
     private int indexOf(E value) {
         for (int i = 0; i < objArray.length; i++) {
             if (value.equals(objArray[i]))
@@ -272,7 +267,6 @@ public class MathSetImpl<E extends Number & Comparable> implements MathSet<E> {
         }
         return -1;
     }
-
 
     private void grow() {
         if (objArray.length < INIT_CAPACITY) {
