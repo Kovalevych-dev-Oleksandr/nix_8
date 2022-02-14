@@ -98,12 +98,12 @@ public class ProgramRun {
         try {
             Student student = studentController.findById(getString(reader, "Enter student id"));
             Course course = courseController.findById(getString(reader, "Enter course id"));
-            if (null != student && null != course) {
-                student.addCourses(course);
-                course.addStudent(student);
-            } else {
-                println("Enter correct Id");
+            if (null == student || null == course) {
+                println("Error");
+                return;
             }
+            student.addCourses(course);
+            course.addStudent(student);
         } catch (Exception e) {
             println("ERROR");
         }
