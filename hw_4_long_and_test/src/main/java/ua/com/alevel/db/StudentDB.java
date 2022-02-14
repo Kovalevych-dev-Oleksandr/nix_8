@@ -2,15 +2,15 @@ package ua.com.alevel.db;
 
 import ua.com.alevel.entity.Student;
 
-import java.util.Objects;
 import java.util.UUID;
 
 public class StudentDB {
+
     private static final StudentDB instance = new StudentDB();
     private static final int START_ARRAY_SIZE = 30;
     private static Student[] students = new Student[START_ARRAY_SIZE];
-
-    private StudentDB() {}
+    private StudentDB() {
+    }
 
     public static StudentDB getInstance() {
         return instance;
@@ -49,7 +49,6 @@ public class StudentDB {
             if (current != null) {
                 current.setName(student.getName());
                 current.setSurname(student.getSurname());
-                current.setCourses(student.getCourses());
                 return "Student was update";
             } else {
                 return "we dont have student with this id";
@@ -62,12 +61,12 @@ public class StudentDB {
     public Student findById(final String id) {
         try {
             int i;
-            for (i = 0; i < StudentDB.students.length; i++) {
-                if (StudentDB.students[i] == null) {
+            for (i = 0; i < students.length; i++) {
+                if (students[i] == null) {
                     break;
                 }
-                if (Objects.equals(StudentDB.students[i].getId(), id)) {
-                    return StudentDB.students[i];
+                if (id.equals(students[i].getId())) {
+                    return students[i];
                 }
             }
             return null;

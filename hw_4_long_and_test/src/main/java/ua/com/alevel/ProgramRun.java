@@ -16,13 +16,6 @@ import java.io.InputStreamReader;
 import static org.apache.xalan.xsltc.compiler.util.Util.println;
 
 public class ProgramRun {
-    /*private BufferedReader reader;
-    private StudentController controller;*/
-
-  /*  public ProgramRun() {
-        this.controller = new StudentController(new StudentService(new StudentDao()));
-        this.reader = new BufferedReader(new InputStreamReader(System.in));
-    }*/
 
     public void run() {
         StudentController studentController = new StudentController(new StudentService(new StudentDao()));
@@ -64,7 +57,6 @@ public class ProgramRun {
 
     private void crud(String position, BufferedReader reader, StudentController studentController, CourseController courseController) {
         switch (position) {
-
             case "1":
                 this.createStudent(reader, studentController);
                 break;
@@ -103,47 +95,15 @@ public class ProgramRun {
     }
 
     private void addStudentToCourse(BufferedReader reader, CourseController courseController, StudentController studentController) {
-
-      /*  private void increasingArray(Student studentUITM) {
-            Student[] newArray = new Student[students.length + START_ARRAY_SIZE];
-            System.arraycopy(students, 0, newArray, 0, students.length);
-            students = newArray;
-            students[students.length] = studentUITM;
-        }*/
-
         try {
             Student student = studentController.findById(getString(reader, "Enter student id"));
             Course course = courseController.findById(getString(reader, "Enter course id"));
-            Course[] courseArray = student.getCourses();
-            Student[] studentArray = course.getStudents();
-
-            if (null == courseArray) {
-                student.setCourses(new Course[]{course});
+            if (null != student && null != course) {
+                student.addCourses(course);
+                course.addStudent(student);
             } else {
-                for (int i = 0; i < courseArray.length; i++) {
-                    if (courseArray[i].getId().equals(course.getId())) {
-                        println("We already have this course and student");
-                        return;
-                    }
-                }
-                Course[] newArray = new Course[(courseArray.length + 1)];
-                System.arraycopy(courseArray, 0, newArray, 0, courseArray.length);
-                newArray[courseArray.length - 1] = course;
-                courseArray = newArray;
-                student.setCourses(courseArray);
-
-                if (null == studentArray) {
-                    course.setStudents(new Student[]{student});
-                } else {
-                    Student[] newArrayStudent = new Student[(studentArray.length + 1)];
-                    System.arraycopy(studentArray, 0, newArrayStudent, 0, studentArray.length);
-                    newArrayStudent[studentArray.length - 1] = student;
-                    studentArray = newArrayStudent;
-                    course.setStudents(studentArray);
-                }
+                println("Enter correct Id");
             }
-            studentController.update(student);
-            courseController.update(course);
         } catch (Exception e) {
             println("ERROR");
         }

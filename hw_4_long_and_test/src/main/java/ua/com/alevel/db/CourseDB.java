@@ -9,8 +9,9 @@ public class CourseDB {
     private static final CourseDB instance = new CourseDB();
     private static final int START_ARRAY_SIZE = 30;
     private static Course[] courses = new Course[START_ARRAY_SIZE];
+    private CourseDB() {
 
-    private CourseDB() {}
+    }
 
     public static CourseDB getInstance() {
         return instance;
@@ -37,7 +38,7 @@ public class CourseDB {
     }
 
     private void increasingArray(Course course) {
-        final Course[] newArray = new Course[courses.length + START_ARRAY_SIZE];
+        Course[] newArray = new Course[courses.length + START_ARRAY_SIZE];
         System.arraycopy(courses, 0, newArray, 0, courses.length);
         courses = newArray;
         courses[courses.length] = course;
@@ -45,7 +46,7 @@ public class CourseDB {
 
     public String update(Course course) {
         try {
-            Course current = this.findById(course.getId());
+            Course current = findById(course.getId());
             if (current != null) {
                 current.setCourseName(course.getCourseName());
                 return "Course was update";
@@ -64,7 +65,7 @@ public class CourseDB {
                 if (courses[i] == null) {
                     break;
                 }
-                if (Objects.equals(courses[i].getId(), id)) {
+                if (id.equals(courses[i].getId())) {
                     return courses[i];
                 }
             }

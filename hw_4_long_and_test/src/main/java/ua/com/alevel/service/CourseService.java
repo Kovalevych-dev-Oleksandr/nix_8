@@ -6,6 +6,7 @@ import ua.com.alevel.entity.Course;
 import ua.com.alevel.entity.Student;
 
 public class CourseService {
+
     private final CourseDao courseDao;
 
     public CourseService(final CourseDao courseDao) {
@@ -22,7 +23,9 @@ public class CourseService {
 
     public Course[] findAll() {return courseDao.findAll();}
 
-    public String update(Course course) {return courseDao.update(course); }
+    public String update(Course course) {
+        return courseDao.update(course);
+    }
 
     public String  delete(String id) {
         return courseDao.delete(id);

@@ -4,6 +4,7 @@ import ua.com.alevel.entity.Course;
 import ua.com.alevel.service.CourseService;
 
 public class CourseController {
+
     private final CourseService courseService;
 
     public CourseController(final CourseService courseService) {
